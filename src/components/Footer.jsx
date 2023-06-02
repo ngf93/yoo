@@ -5,8 +5,12 @@ import LogoWhite from '../assets/imgs/logo-white.svg';
 import LogoTextWhite from '../assets/imgs/logo-text-white.svg';
 import AppStore from '../assets/imgs/appstore.svg';
 import GooglePlay from '../assets/imgs/googleplay.svg';
-import {Link} from 'react-router-dom';
-import { HiHashtag } from "react-icons/hi2";
+import {Link, NavLink} from 'react-router-dom';
+import HomeIcon from './svgs/HomeIcon';
+import BellIcon from './svgs/BellIcon';
+import FlameIcon from './svgs/FlameIcon';
+import CartIcon from './svgs/CartIcon';
+import UserIcon from './svgs/UserIcon';
 
 const Footer = () => {
   const isMobileLG = useIsMobile('991px');
@@ -16,22 +20,37 @@ const Footer = () => {
       <Container className='h-100'>
         {
           (isMobileLG)
-          ? <nav className='h-100'>
+          ? <nav className='h-100 mobile'>
             <ul className="h-100 list-unstyled d-flex justify-content-between align-items-center">
               <li>
-                <HiHashtag/>
+                <NavLink to='/'>
+                  <HomeIcon/>
+                  <span>Главная</span>
+                </NavLink>
               </li>
               <li>
-                <HiHashtag/>
+                <NavLink to='/notifications'>
+                  <BellIcon/>
+                  <span>Уведомления</span>
+                </NavLink>
               </li>
               <li>
-                <HiHashtag/>
+                <NavLink to='/offers'>
+                  <FlameIcon/>
+                  <span>Акции</span>
+                </NavLink>
               </li>
               <li>
-                <HiHashtag/>
+                <NavLink to='/cart'>
+                  <CartIcon/>
+                  <span>Корзина</span>
+                </NavLink>
               </li>
               <li>
-                <HiHashtag/>
+                <NavLink to='/profile'>
+                  <UserIcon/>
+                  <span>Аккаунт</span>
+                </NavLink>
               </li>
             </ul>
           </nav>

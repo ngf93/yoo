@@ -21,14 +21,14 @@ const Home = () => {
   return (
     <main>
       <section className='sec-1 mb-5'>
-        <Container>
-          <Row className='justify-content-center'>
-            <Col xs={12} lg={11} xl={9} xxl={8}>
+        <div className='container-md gx-0 gx-md-4'>
+          <div className='row justify-content-center'>
+            <div className='col-12 col-lg-11 col-xl-9 col-xxl-8'>
               <Swiper
                 className='main-slider paginated'
                 modules={[Navigation, Pagination]}
                 loop={true}
-                spaceBetween={35}
+                spaceBetween={0}
                 slidesPerView={1}
                 initialSlide={1}
                 loopedSlides={2}
@@ -38,6 +38,11 @@ const Home = () => {
                   prevEl: '.swiper-button-prev',
                 }}
                 pagination={{ clickable: true }}
+                breakpoints={{
+                  768: {
+                    spaceBetween: 35,
+                  },
+                }}
               >
                 <SwiperSlide>
                   <Link to='/'>
@@ -66,9 +71,9 @@ const Home = () => {
                   <HiOutlineArrowRightCircle/>
                 </div>
               </Swiper>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className='sec-2 mb-5'>
@@ -83,7 +88,7 @@ const Home = () => {
             <img src={Choose} alt="Choose" />
             <GridIcon/>
           </button>
-          <Row md={3} xl={4} className='g-4'>
+          <Row xs={2} md={3} xl={4} className='g-3 g-sm-4'>
             <Col><CategoryCard/></Col>
             <Col><CategoryCard/></Col>
             <Col><CategoryCard/></Col>
@@ -169,9 +174,15 @@ const Home = () => {
         <Container>
           <Swiper
             className='sw-offers'
-            spaceBetween={0}
-            slidesPerView={3}
+            spaceBetween={20}
+            slidesPerView={'auto'}
             speed={750}
+            breakpoints={{
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+              },
+            }}
           >
             <SwiperSlide>
               <Offer blackText={false} img={"imgs/offers/offer1.jpg"} title={'Весна пришла'} subtitle={'А с ней новые вкусы роллов!'}/>

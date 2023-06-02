@@ -4,6 +4,9 @@
 :root {
   --h-height: 70px;
   --f-height: 112px;
+  @include media-breakpoint-down(lg) {
+    --f-height: 70px;
+  }
 }
 
 $main-font: "Open Sans";
@@ -386,15 +389,33 @@ body {
 
 
 header {
+  height: var(--h-height);
+  @include media-breakpoint-down(lg) {
+    background-color: $white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    @include shadow();
+  }
   nav {
     --pad: 40px;
-    background-color: #fff;
+    background-color: $white;
     padding: 1em var(--pad);
     @include shadow();
     border-radius: 0px 0px $radius $radius;
     width: calc(100% + var(--pad)*2);
     margin-left: calc(var(--pad) * -1);
     @include flex(row, space-between, center, nowrap);
+    @include media-breakpoint-down(xl) {
+      --pad: 30px;
+    }
+    @include media-breakpoint-down(lg) {
+      --pad: 0px;
+      box-shadow: none;
+      border-radius: 0px;
+    }
     svg {
       stroke-width: 1px;
     }
@@ -412,7 +433,7 @@ header {
         }
       }
       &.icons-menu {
-        li {
+        &>li {
           &:not(:first-child){
             margin-left: 1.25em;
           }
@@ -428,6 +449,14 @@ header {
   .logo {
     width: 100px;
   }
+  .phone {
+    @include flex(row, flex-start, center, nowrap);
+    color: $black;
+    transition: $transition;
+    &:hover, &:focus, &:active {
+      color: $main-color;
+    }
+  }
   .badge {
     font-size: 10px;
     background-color: $main-color;
@@ -436,12 +465,25 @@ header {
     height: 1.6em;
     @include flex();
   }
+  .btn-menu {
+    color: $gray;
+    font-size: 2em;
+    @include flex();
+    transition: $transition;
+    &:hover, &:focus, &:active {
+      color: $main-color;
+    }
+  }
 }
 
 
 main {
   min-height: calc(100vh - var(--h-height) - var(--f-height));
   padding: 3em 0px;
+  @include media-breakpoint-down(lg) {
+    min-height: 100vh;
+    padding: var(--h-height) 0px var(--f-height);
+  }
 }
 
 
@@ -455,6 +497,13 @@ main {
       height: 400px;
       object-fit: cover;
       border-radius: $radius;
+      @include media-breakpoint-down(lg) {
+        height: 330px;
+      }
+      @include media-breakpoint-down(md) {
+        border-radius: 0px;
+        height: auto;
+      }
     }
   }
 }
@@ -595,6 +644,9 @@ main {
     @include media-breakpoint-down(xxl) {
       height: 180px;
     }
+    @include media-breakpoint-down(lg) {
+      height: 150px;
+    }
   }
   figcaption {
     text-align: center;
@@ -686,6 +738,10 @@ main {
       @include media-breakpoint-down(xl) {
         height: 320px;
       }
+      @include media-breakpoint-down(lg) {
+        height: 280px;
+        width: 280px;
+      }
     }
     figcaption {
       @include absBG(10);
@@ -698,18 +754,25 @@ main {
     }
   }
   .sw-offers {
-    padding: 1em;
+    @include media-breakpoint-up(lg) {
+      padding: 1em;
+    }
     &:hover {
       .offer {
         transform: rotate(0deg) !important;
       }
     }
     .swiper-slide {
-      &:nth-child(odd){
-        .offer {transform: rotate(3deg);}
+      @include media-breakpoint-down(lg) {
+        width: fit-content;
       }
-      &:nth-child(even){
-        .offer {transform: rotate(-3deg);}
+      @include media-breakpoint-up(lg) {
+        &:nth-child(odd){
+          .offer {transform: rotate(3deg);}
+        }
+        &:nth-child(even){
+          .offer {transform: rotate(-3deg);}
+        }
       }
     }
   }
@@ -719,6 +782,17 @@ footer {
   height: var(--f-height);
   background-color: $black;
   color: $white;
+  @include media-breakpoint-down(lg) {
+    background-color: $white;
+    color: $dark-gray;
+    @include shadow();
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    @include shadow();
+  }
   .desktop {
     height: 100%;
     @include flex(row, space-between, center, nowrap);
@@ -728,11 +802,33 @@ footer {
         width: 100px;
       }
     }
+    a {
+      transition: $transition;
+      &:hover {
+        color: lighten($color: $main-color, $amount: 20%);
+      }
+    }
   }
-  a {
-    transition: $transition;
-    &:hover {
-      color: lighten($color: $main-color, $amount: 20%);
+  .mobile {
+    a {
+      @include flex();
+      padding: 0.5em 0.75em;
+      border-radius: $radius*0.5;
+      svg {
+        font-size: 1.6em;
+      }
+      span {
+        max-width: 0px;
+        overflow: hidden;
+      }
+      &.active {
+        background-color: $main-color;
+        color: $white;
+        span {
+          max-width: fit-content;
+          margin-left: .75em;
+        }
+      }
     }
   }
 }

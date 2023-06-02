@@ -22,13 +22,20 @@ const StoriesSection = () => {
         className="swiper-stories"
         modules={[Navigation, FreeMode]}
         speed={750}
-        spaceBetween={50}
-        slidesPerGroup={4}
+        spaceBetween={15}
         slidesPerView={'auto'}
         freeMode={true}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
+        }}
+        breakpoints={{
+          768: {
+            spaceBetween: 30,
+          },
+          1200: {
+            spaceBetween: 50
+          },
         }}
       >
         <SwiperSlide>

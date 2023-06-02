@@ -1,0 +1,14 @@
+import React from 'react';
+
+const CartIcon = () => {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.3513 10.4029C21.3781 10.1836 21.3584 9.96107 21.2934 9.74986C21.2285 9.53866 21.1197 9.34354 20.9741 9.17723C20.8269 9.00961 20.6456 8.87527 20.4424 8.78314C20.2392 8.69102 20.0187 8.64323 19.7956 8.64294H2.91843C2.69531 8.64323 2.47481 8.69102 2.2716 8.78314C2.06839 8.87527 1.88712 9.00961 1.73986 9.17723C1.59435 9.34354 1.48555 9.53866 1.42056 9.74986C1.35558 9.96107 1.33587 10.1836 1.36272 10.4029L2.54129 19.8315C2.58761 20.2148 2.77341 20.5676 3.06324 20.8227C3.35307 21.0777 3.72665 21.2172 4.11272 21.2144H18.6327C19.0188 21.2172 19.3924 21.0777 19.6822 20.8227C19.972 20.5676 20.1578 20.2148 20.2041 19.8315L21.3513 10.4029Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.28564 8.64291V7.8572C4.28564 5.98174 5.03067 4.18309 6.35682 2.85694C7.68297 1.53079 9.48161 0.785767 11.3571 0.785767C13.2325 0.785767 15.0312 1.53079 16.3573 2.85694C17.6835 4.18309 18.4285 5.98174 18.4285 7.8572V8.64291" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8.21436 13.3572V16.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14.5 13.3572V16.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  );
+};
+
+export default CartIcon;
