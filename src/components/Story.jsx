@@ -3,8 +3,8 @@ import React from 'react';
 const Story = (props) => {
   return (
     <figure className="story" onClick={props.onClick}>
-      <img src="imgs/img1.png" alt="Пицца «Больше мяса»" />
-      <figcaption>Пицца «Больше мяса»</figcaption>
+      <img src={props.img} alt={props.title} />
+      <figcaption>{props.title}</figcaption>
     </figure>
   );
 };

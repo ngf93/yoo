@@ -23,7 +23,7 @@ const Home = () => {
       <section className='sec-1 mb-5'>
         <Container>
           <Row className='justify-content-center'>
-            <Col xl={8}>
+            <Col xs={12} lg={11} xl={9} xxl={8}>
               <Swiper
                 className='main-slider paginated'
                 modules={[Navigation, Pagination]}
@@ -83,7 +83,7 @@ const Home = () => {
             <img src={Choose} alt="Choose" />
             <GridIcon/>
           </button>
-          <Row md={4} className='g-4'>
+          <Row md={3} xl={4} className='g-4'>
             <Col><CategoryCard/></Col>
             <Col><CategoryCard/></Col>
             <Col><CategoryCard/></Col>
@@ -99,7 +99,7 @@ const Home = () => {
           </Row>
           <button type='button' className='main-color mx-auto mt-4'>
             <span>показать все</span>
-            <HiOutlineArrowUturnDown className='fs-15 ms-3 main-color'/>
+            <HiOutlineArrowUturnDown className='fs-15 ms-3 main-color rotateY-180'/>
           </button>
         </Container>
       </section>

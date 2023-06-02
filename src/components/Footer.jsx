@@ -36,7 +36,7 @@ const Footer = () => {
             </ul>
           </nav>
           : <div className='desktop'>
-            <img src={LogoWhite} alt="yoo.app" />
+            <img src={LogoWhite} alt="yoo.app" className='logo'/>
 
             <nav>
               <ul className="list-unstyled d-flex">

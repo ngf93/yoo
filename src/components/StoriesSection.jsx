@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
-import Modal from 'react-bootstrap/Modal'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {FreeMode, Navigation, Pagination} from 'swiper'
-import Story from './Story'
-import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle } from "react-icons/hi2";
+import Modal from 'react-bootstrap/Modal';
+import Story from './Story';
+import StoryBig from './StoryBig';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {FreeMode, Navigation, Scrollbar} from 'swiper';
+import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle, HiXMark } from "react-icons/hi2";
 
 const StoriesSection = () => {
-  const [activeSlide, setActiveSlide] = useState(0)
-  const [story, setStory] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [story, setStory] = useState(false);
 
-  const closeStory = () => setStory(false)
+  const closeStory = () => setStory(false);
   const showStory = (index) => {
-    setStory(true)
-    setActiveSlide(index)
-  }
+    setStory(true);
+    setActiveSlide(index);
+  };
 
   return (
     <>
@@ -31,28 +32,16 @@ const StoriesSection = () => {
         }}
       >
         <SwiperSlide>
-          <Story onClick={() => showStory(0)}/>
+          <Story onClick={() => showStory(0)} img={"imgs/img1.png"} title={"Пицца «Больше мяса»и"}/>
         </SwiperSlide>
         <SwiperSlide>
-          <Story onClick={() => showStory(1)}/>
+          <Story onClick={() => showStory(1)} img={"imgs/img4.png"} title={"Попробуйте новые сезонные напитки"}/>
         </SwiperSlide>
         <SwiperSlide>
-          <Story onClick={() => showStory(2)}/>
+          <Story onClick={() => showStory(2)} img={"imgs/img1.png"} title={"Пицца «Больше мяса»и"}/>
         </SwiperSlide>
         <SwiperSlide>
-          <Story onClick={() => showStory(3)}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Story onClick={() => showStory(0)}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Story onClick={() => showStory(1)}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Story onClick={() => showStory(2)}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Story onClick={() => showStory(3)}/>
+          <Story onClick={() => showStory(3)} img={"imgs/img4.png"} title={"Попробуйте новые сезонные напитки"}/>
         </SwiperSlide>
         <div className="swiper-button-prev">
           <HiOutlineArrowLeftCircle/>
@@ -65,16 +54,38 @@ const StoriesSection = () => {
       <Modal show={story} onHide={closeStory} className="story-modal">
         <Modal.Body>
           <Swiper
-            className="swiper-stories-mobile"
-            modules={[Pagination]}
+            className="swiper-stories-modal"
+            modules={[Scrollbar, Navigation]}
             slidesPerView={1}
-            pagination={{clickable: true}}
+            scrollbar={{ draggable: true }}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
             onSwiper={(swiper) => swiper.slideTo(activeSlide, 50)}
           >
             <SwiperSlide>
-              <Story/>
+              <StoryBig img={"imgs/img1.png"} title={"Пицца «Больше мяса»"}/>
             </SwiperSlide>
+            <SwiperSlide>
+              <StoryBig img={"imgs/img4.png"} title={"Попробуйте новые сезонные напитки"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <StoryBig img={"imgs/img1.png"} title={"Пицца «Больше мяса»"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <StoryBig img={"imgs/img4.png"} title={"Попробуйте новые сезонные напитки"}/>
+            </SwiperSlide>
+            <div className="swiper-button-prev">
+              <HiOutlineArrowLeftCircle/>
+            </div>
+            <div className="swiper-button-next">
+              <HiOutlineArrowRightCircle/>
+            </div>
           </Swiper>
+          <button className='close' onClick={closeStory}>
+            <HiXMark/>
+          </button>
         </Modal.Body>
       </Modal>
     </>

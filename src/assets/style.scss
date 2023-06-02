@@ -101,6 +101,8 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
   margin-bottom: 0px;
 }
 
+.rotateY-180 {transform: rotateY(180deg);}
+
 h1, h2 {
   font-size: 1.75em;
   font-weight: 600;
@@ -228,6 +230,84 @@ button {
     color: $dark;
   }
 }
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  span {flex:1;}
+}
+.select {
+  position: relative;
+  &-button {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    @include flex();
+    border: 1px solid $main-color;
+    border-radius: $radius;
+    padding: .45em 1em;
+    &.borderless {
+      border: none;
+    }
+    &-value {
+      flex: 1;
+      @include flex(row, flex-start, center, nowrap);
+      img {
+        width: 1.5em;
+        height: 1.5em;
+        object-fit: contain;
+        margin-right: .5em;
+        &.round {
+          border-radius: 50%;
+          filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
+        }
+      }
+    }
+    &-chevron {
+      color: $main-color;
+      margin-left: .5em;
+    }
+  }
+  &-options {
+    @include list();
+    display: block;
+    z-index: 5;
+    position: absolute;
+    top: calc(100% + .5em);
+    left: 0%;
+    width: fit-content;
+    min-width: 200px;
+    background-color: $white;
+    @include shadow();
+    border-radius: $radius*0.5;
+    overflow: hidden;
+    @include safariFix();
+    li {
+      &:not(:first-child){
+        border-top: 1px solid $light-gray;
+      }
+    }
+    label {
+      cursor: pointer;
+      background-color: $white;
+      transition: $transition;
+      padding: .5em 1em;
+      &.active {
+        background-color: rgba($color: $main-color, $alpha: 0.1);
+      }
+      img {
+        width: 1.5em;
+        height: 1.5em;
+        object-fit: contain;
+        margin-right: .5em;
+        &.round {
+          border-radius: 50%;
+          filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
+        }
+      }
+    }
+  }
+}
 
 /* Sliders */
 .swiper {
@@ -299,6 +379,9 @@ body {
   font-size: 16px;
   font-weight: 400;
   overflow-x: hidden;
+  @include media-breakpoint-down(xl) {
+    font-size: 14px;
+  }
 }
 
 
@@ -322,6 +405,9 @@ header {
         li {
           &:not(:first-child){
             margin-left: 2.5em;
+            @include media-breakpoint-down(xxl) {
+              margin-left: 1.5em;
+            }
           }
         }
       }
@@ -332,11 +418,23 @@ header {
           }
         }
         a {
+          @include flex();
           color: $main-color;
           font-size: 1.75em;
         }
       }
     }
+  }
+  .logo {
+    width: 100px;
+  }
+  .badge {
+    font-size: 10px;
+    background-color: $main-color;
+    color: $white;
+    width: 1.6em;
+    height: 1.6em;
+    @include flex();
   }
 }
 
@@ -374,22 +472,93 @@ main {
       color: rgba($color: $main-color, $alpha: 0.6);
     }
   }
-  .story {
-    padding: 3px;
+}
+.story {
+  padding: 3px;
+  img {
+    display: block;
+    margin: 0 auto 1em;
+    @include rounedImg(var(--w));
+    border: 2px solid #fff;
+    outline: 3px solid rgba($color: $main-color, $alpha: 0.3);
+  }
+  figcaption {
+    font-size: .9em;
+    text-align: center;
+  }
+  &-big {
     img {
       display: block;
-      margin: 0 auto 1em;
-      @include rounedImg(var(--w));
-      border: 2px solid #fff;
-      outline: 3px solid rgba($color: $main-color, $alpha: 0.3);
-    }
-    figcaption {
-      font-size: .9em;
-      text-align: center;
+      width: 450px;
+      height: 800px;
+      object-fit: cover;
+      border-radius: $radius*0.5;
     }
   }
 }
-
+.story-modal {
+  .modal {
+    &-dialog {
+      max-width: 450px;
+    }
+    &-content {
+      background-color: transparent;
+      border: none;
+      border-radius: unset;
+    }
+    &-body {
+      padding: 0px;
+      position: relative;
+      .swiper-stories-modal {
+        position: unset;
+        width: 450px;
+        .swiper-button {
+          bottom: 50%;
+          transform: translateY(50%);
+          font-size: 2em;
+          svg {
+            fill: transparent;
+          }
+          &-prev {
+            left: -1.25em;
+          }
+          &-next {
+            right: -1.25em;
+          }
+        }
+        .swiper-scrollbar {
+          position: absolute;
+          z-index: 100;
+          top: 1em;
+          left: 1em;
+          width: calc(100% - 2em);
+          height: 1px;
+          background-color: $white;
+          &-drag {
+            height: 3px;
+            background-color: $white;
+            margin-top: -1px;
+          }
+        }
+      }
+      .close {
+        position: absolute;
+        top: 0px;
+        left: calc(100% + 0.25em);
+        color: $white;
+        font-size: 2em;
+        @include flex();
+        transition: $transition;
+        background-color: transparent;
+        border-radius: $radius*0.15;
+        &:hover, &:focus, &:active {
+          color: $red;
+          background-color: $white;
+        }
+      }
+    }
+  }
+}
 
 .sec-3 {
   margin-top: 8em;
@@ -414,22 +583,25 @@ main {
       }
     }
   }
-  .category-card {
-    position: relative;
-    img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: $radius;
-      margin-bottom: $radius*0.5;
+}
+.category-card {
+  position: relative;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $radius;
+    margin-bottom: $radius*0.5;
+    @include media-breakpoint-down(xxl) {
+      height: 180px;
     }
-    figcaption {
-      text-align: center;
-      a {
-        transition: $transition;
-        &:hover {
-          color: $main-color;
-        }
+  }
+  figcaption {
+    text-align: center;
+    a {
+      transition: $transition;
+      &:hover {
+        color: $main-color;
       }
     }
   }
@@ -442,11 +614,25 @@ main {
   background-size: 62% auto, 100% calc(100% - 10em);
   padding: 15em 4em 3em;
   position: relative;
+  @include media-breakpoint-down(xxl) {
+    padding: 10em 3em 2em;
+    background-position: 12% 25%,center bottom;
+    background-size: 62% auto,100% calc(100% - 5em);
+  }
+  @include media-breakpoint-down(xl) {
+    padding: 6em 3em 2em;
+    background-position: 12% 0%,center bottom;
+    background-size: 62% auto,100% calc(100% - 1em);
+  }
   .phone {
     position: absolute;
     bottom: -7%;
     right: -5%;
     width: 50%;
+    @include media-breakpoint-down(xl) {
+      bottom: -5%;
+      width: 45%;
+    }
   }
 }
 
@@ -494,12 +680,21 @@ main {
       height: 420px;
       object-fit: cover;
       border-radius: $radius;
+      @include media-breakpoint-down(xxl) {
+        height: 380px;
+      }
+      @include media-breakpoint-down(xl) {
+        height: 320px;
+      }
     }
     figcaption {
       @include absBG(10);
       color: $white;
       padding: 2em;
       @include flex(column, space-between, stretch, nowrap);
+      @include media-breakpoint-down(xl) {
+        padding: 1em;
+      }
     }
   }
   .sw-offers {
@@ -527,6 +722,12 @@ footer {
   .desktop {
     height: 100%;
     @include flex(row, space-between, center, nowrap);
+    .logo {
+      width: 140px;
+      @include media-breakpoint-down(xl) {
+        width: 100px;
+      }
+    }
   }
   a {
     transition: $transition;
