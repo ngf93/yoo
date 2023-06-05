@@ -77,15 +77,15 @@ const Home = () => {
       </section>
 
       <section className='sec-2 mb-5'>
-        <Container>
+        <div className='container-md px-0 px-md-4'>
           <StoriesSection/>
-        </Container>
+        </div>
       </section>
 
       <section className='sec-3 mb-5'>
         <Container className='box'>
-          <button type='button' className='btn-view mb-3 ms-auto me-5'>
-            <img src={Choose} alt="Choose" />
+          <button type='button' className='d-none d-md-flex btn-view mb-3 ms-auto me-5'>
+            <img src={Choose} alt="Choose"/>
             <GridIcon/>
           </button>
           <Row xs={2} md={3} xl={4} className='g-3 g-sm-4'>
@@ -111,18 +111,22 @@ const Home = () => {
 
       <Container>
         <section className='sec-4 mb-5'>
-          <h3>Заказывать стало ещё&nbsp;удобнее!</h3>
-          <div className="d-flex align-items-center mb-4">
-            <button type='button' className='btn-2 fs-20 py-2 me-3'>скидка 15%</button>
+          <h3>Заказывать стало <br className='d-lg-none'/>ещё&nbsp;удобнее!</h3>
+          <div className="d-flex align-items-center mb-3 mb-lg-4">
+            <button type='button' className='btn-2 fs-20 py-2 px-3 px-lg-4 me-2 me-md-3'>
+              <span className='d-lg-none'>—</span>
+              <span className='d-none d-lg-inline'>скидка</span>
+              <span> 15%</span>
+            </button>
             <p className='fs-16'>на&nbsp;первый заказ <br/>через&nbsp;приложение</p>
           </div>
-          <ul className='list-unstyled d-flex mb-5'>
+          <ul className='logotips mb-3 mb-lg-5'>
             <li>
               <a href="/">
                 <img src={AppStore} alt="App Store" />
               </a>
             </li>
-            <li className='ms-5'>
+            <li>
               <a href="/">
                 <img src={GooglePlay} alt="Google Play" />
               </a>
@@ -174,10 +178,18 @@ const Home = () => {
         <Container>
           <Swiper
             className='sw-offers'
-            spaceBetween={20}
+            spaceBetween={5}
             slidesPerView={'auto'}
             speed={750}
             breakpoints={{
+              576: {
+                slidesPerView: 'auto',
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+              },
               992: {
                 slidesPerView: 3,
                 spaceBetween: 0,

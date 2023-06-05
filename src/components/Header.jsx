@@ -4,12 +4,18 @@ import Container from 'react-bootstrap/Container';
 import {Link} from 'react-router-dom';
 import useIsMobile from '../hooks/isMobile';
 import SelectImitation from './utils/SelectImitation';
-import { HiOutlineDevicePhoneMobile, HiOutlineUserCircle, HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi2";
+import { HiOutlineDevicePhoneMobile, HiOutlineUserCircle, HiOutlineShoppingBag, HiOutlineHeart, HiOutlineArrowLeftCircle } from "react-icons/hi2";
 import Logo from '../assets/imgs/logo.svg';
 import delivery from '../assets/imgs/delivery_icon.svg';
 import ruFlag from '../assets/imgs/flags/rus.jpg';
 import engFlag from '../assets/imgs/flags/eng.jpg';
 import MenuIcon from './svgs/MenuIcon';
+import MenuPhone from './svgs/MenuPhone';
+import MenuDelivery from './svgs/MenuDelivery';
+import MenuVacancies from './svgs/MenuVacancies';
+import MenuDocs from './svgs/MenuDocs';
+import { IoCloseOutline } from "react-icons/io5";
+import YooApp from './svgs/YooApp';
 
 const Header = () => {
   const isMobileLG = useIsMobile('991px');
@@ -17,11 +23,13 @@ const Header = () => {
   const handleCloseMenu = () => setShowMenu(false);
   const handleShowMenu = () => setShowMenu(true);
 
+  const [isContacts, setIsContacts] = useState(false);
+
   return (
     <>
       <header>
-        <Container>
-          <nav>
+        <Container className='h-100'>
+          <nav className='h-100'>
             <Link to='/'><img src={Logo} alt="yoo.app" className='logo'/></Link>
             {
               (!isMobileLG) && 
@@ -106,8 +114,12 @@ const Header = () => {
                   </li>
                 </>
                 : <li>
-                  <button type='button' className='btn-menu'>
-                    <MenuIcon/>
+                  <button type='button' onClick={(showMenu) ? handleCloseMenu : handleShowMenu} className='btn-menu'>
+                    {
+                      (showMenu)
+                      ? <IoCloseOutline/>
+                      : <MenuIcon/>
+                    }
                   </button>
                 </li>
               }
@@ -115,13 +127,60 @@ const Header = () => {
           </nav>
         </Container>
       </header>
-      <Offcanvas show={showMenu} onHide={handleCloseMenu} placement={'end'}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
+
+      <Offcanvas className="offcanvas-menu" show={showMenu} onHide={handleCloseMenu} placement={'end'}>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <Container>
+            {
+              (isContacts)
+              ? <>
+                <div className="d-flex mb-4">
+                  <button type='button' onClick={()=>setIsContacts(false)} className='main-color-60 fs-12 d-flex align-items-center'>
+                    <HiOutlineArrowLeftCircle className='fs-14'/>
+                    <span className='ms-1'>Назад</span>
+                  </button>
+                  <h5 className='flex-1 text-center fs-12 fw-6 mb-0'>Контакты</h5>
+                </div>
+                <h5 className='text-center fs-12 fw-6'>ООО “Вкусные решения”, г. Казань</h5>
+              
+              </>
+              : <>
+              <img src="imgs/slider-main/slide-1.jpg" alt="Большие пиццы" className='menu-offer'/>
+              <nav>
+                <ul>
+                  <li>
+                    <button type='button' onClick={()=>setIsContacts(true)}>
+                      <MenuPhone/>
+                      <span>Контакты</span>
+                    </button>
+                  </li>
+                  <li>
+                    <Link to='/'>
+                      <MenuDelivery/>
+                      <span>Оплата и доставка</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/'>
+                      <MenuVacancies/>
+                      <span>Вакансии</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/'>
+                      <MenuDocs/>
+                      <span>Политика конфиденциальности</span>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+
+              <p className="gray text-center mt-4 mt-md-5">Разработано на платформе</p>
+              <p className='text-center mt-2'><a href><YooApp/></a></p>
+              </>
+            }
+              
+          </Container>
         </Offcanvas.Body>
       </Offcanvas>
     </>

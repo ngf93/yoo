@@ -7,6 +7,14 @@
   @include media-breakpoint-down(lg) {
     --f-height: 70px;
   }
+  @include media-breakpoint-down(md) {
+    --h-height: 50px;
+    --f-height: 60px;
+  }
+  @include media-breakpoint-down(sm) {
+    --h-height: 45px;
+    --f-height: 50px;
+  }
 }
 
 $main-font: "Open Sans";
@@ -105,6 +113,7 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
 }
 
 .rotateY-180 {transform: rotateY(180deg);}
+.flex-1 {flex: 1;}
 
 h1, h2 {
   font-size: 1.75em;
@@ -115,21 +124,33 @@ h3 {
   font-size: 2.25em;
   font-weight: 400;
   margin-bottom: .5em;
+  @include media-breakpoint-down(sm) {
+    font-size: 2em;
+  }
 }
 h4 {
   font-size: 1.875em;
   font-weight: 400;
   margin-bottom: .5em;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.5em;
+  }
 }
 h5 {
   font-size: 1.5em;
   font-weight: 400;
   margin-bottom: .5em;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.25em;
+  }
 }
 h6 {
   font-size: 1.125em;
   font-weight: 600;
   margin-bottom: .5em;
+  @include media-breakpoint-down(sm) {
+    font-size: 1em;
+  }
 }
 .fs {
   &-08 {font-size: 0.8em;}
@@ -168,6 +189,9 @@ h6 {
 }
 .main-color {
   color: $main-color;
+}
+.main-color-60 {
+  color: rgba($color: $main-color, $alpha: 0.6);
 }
 
 /* Form elements */
@@ -285,6 +309,9 @@ label {
     border-radius: $radius*0.5;
     overflow: hidden;
     @include safariFix();
+    @include media-breakpoint-down(lg) {
+      min-width: fit-content;
+    }
     li {
       &:not(:first-child){
         border-top: 1px solid $light-gray;
@@ -396,13 +423,18 @@ header {
     top: 0px;
     left: 0px;
     width: 100%;
-    z-index: 1000;
+    z-index: 1050;
     @include shadow();
+    .select {
+      &-button-value {
+        span {display: none;}
+      }
+    }
   }
   nav {
     --pad: 40px;
     background-color: $white;
-    padding: 1em var(--pad);
+    // padding: 1em var(--pad);
     @include shadow();
     border-radius: 0px 0px $radius $radius;
     width: calc(100% + var(--pad)*2);
@@ -475,6 +507,50 @@ header {
     }
   }
 }
+.offcanvas-menu {
+  width: 100% !important;
+  .offcanvas-body {
+    padding: calc(var(--h-height) + 2em) 1em calc(var(--f-height) + 2em);
+    .menu-offer {
+      width: 100%;
+      border-radius: $radius;
+      margin-bottom: 2em;
+    }
+    nav {
+      @include lightShadow();
+      border-radius: $radius;
+      overflow: hidden;
+      @include safariFix();
+      ul {
+        @include list();
+        li {
+          &:not(:first-child){
+            border-top: 1px solid $light-gray;
+          }
+          a, button {
+            @include flex(row, flex-start, center, nowrap);
+            font-size: 1.5em;
+            padding: 1em;
+            @include media-breakpoint-down(md) {
+              font-size: 1.25em;
+            }
+            @include media-breakpoint-down(sm) {
+              font-size: 1.1em;
+            }
+            svg {
+              font-size: 1.6em;
+              color: $main-color;
+              margin-right: .5em;
+              @include media-breakpoint-down(sm) {
+                margin-right: .25em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 
 main {
@@ -511,6 +587,12 @@ main {
 
 .sec-2 {
   --w: 150px;
+  @include media-breakpoint-down(md) {
+    position: relative;
+  }
+  @include media-breakpoint-down(sm) {
+    --w: 90px;
+  }
   .swiper-stories {
     .swiper-slide {
       width: calc(var(--w) + 1em);
@@ -530,10 +612,17 @@ main {
     @include rounedImg(var(--w));
     border: 2px solid #fff;
     outline: 3px solid rgba($color: $main-color, $alpha: 0.3);
+    @include media-breakpoint-down(md) {
+      border: 1px solid #fff;
+      outline: 2px solid rgba($color: $main-color, $alpha: 0.3);
+    }
   }
   figcaption {
     font-size: .9em;
     text-align: center;
+    @include media-breakpoint-down(sm) {
+      font-size: .75em;
+    }
   }
   &-big {
     img {
@@ -609,13 +698,21 @@ main {
   }
 }
 
+
 .sec-3 {
-  margin-top: 8em;
+  @include media-breakpoint-up(md) {
+    margin-top: 8em;
+  }
   .box {
     background-color: $white;
     @include shadow();
     padding: $radius;
     border-radius: $radius;
+    @include media-breakpoint-down(md) {
+      padding: 0px 1em;
+      border-radius: 0px;
+      box-shadow: none;
+    }
     .btn-view {
       position: relative;
       color: $gray;
@@ -647,6 +744,10 @@ main {
     @include media-breakpoint-down(lg) {
       height: 150px;
     }
+    @include media-breakpoint-down(sm) {
+      height: 30vw;
+      border-radius: $radius*0.5;
+    }
   }
   figcaption {
     text-align: center;
@@ -673,8 +774,53 @@ main {
   }
   @include media-breakpoint-down(xl) {
     padding: 6em 3em 2em;
-    background-position: 12% 0%,center bottom;
-    background-size: 62% auto,100% calc(100% - 1em);
+    background-position: 12% 0%, center bottom;
+    background-size: 62% auto, 100% calc(100% - 1em);
+  }
+  @include media-breakpoint-down(lg) {
+    padding: 5em 2em 1.5em;
+    background-position: 0% 0%, center bottom;
+    background-size: 80% auto, 100% calc(100% - 1em);
+    .fs-16 {font-size: 1.3em}
+  }
+  @include media-breakpoint-down(md) {
+    padding: 4em 1.5em 1em;
+    .fs-20 {font-size: 1.5em}
+  }
+  @include media-breakpoint-down(sm) {
+    padding: 3em 1em 1em;
+    font-size: 10px;
+    .fs-16 {font-size: 1.2em}
+  }
+  .logotips {
+    @include list();
+    @include flex(row, flex-start, center, nowrap);
+    li {
+      &:not(:first-child){
+        margin-left: 3em;
+        @include media-breakpoint-down(lg) {
+          margin-left: 2em;
+        }
+        @include media-breakpoint-down(md) {
+          margin-left: 1em;
+        }
+      }
+    }
+    img {
+      height: 60px;
+      @include media-breakpoint-down(xl) {
+        height: 55px;
+      }
+      @include media-breakpoint-down(lg) {
+        height: 50px;
+      }
+      @include media-breakpoint-down(md) {
+        height: 40px;
+      }
+      @include media-breakpoint-down(sm) {
+        height: 30px;
+      }
+    }
   }
   .phone {
     position: absolute;
@@ -685,6 +831,15 @@ main {
       bottom: -5%;
       width: 45%;
     }
+    @include media-breakpoint-down(lg) {
+      width: 55%;
+      right: -10%;
+    }
+    @include media-breakpoint-down(md) {
+      width: 60%;
+      right: -20%;
+      bottom: 5%;
+    }
   }
 }
 
@@ -692,6 +847,9 @@ main {
 .sec-5 {
   position: relative;
   overflow: hidden;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
   .product-slider {
     overflow: visible;
     padding: 1em 0px;
@@ -742,6 +900,10 @@ main {
         height: 280px;
         width: 280px;
       }
+      @include media-breakpoint-down(sm) {
+        height: 190px;
+        width: 190px;
+      }
     }
     figcaption {
       @include absBG(10);
@@ -750,6 +912,9 @@ main {
       @include flex(column, space-between, stretch, nowrap);
       @include media-breakpoint-down(xl) {
         padding: 1em;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 11px;
       }
     }
   }
@@ -790,7 +955,7 @@ footer {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    z-index: 1000;
+    z-index: 1050;
     @include shadow();
   }
   .desktop {
