@@ -14,7 +14,8 @@ import MenuPhone from './svgs/MenuPhone';
 import MenuDelivery from './svgs/MenuDelivery';
 import MenuVacancies from './svgs/MenuVacancies';
 import MenuDocs from './svgs/MenuDocs';
-import { IoCloseOutline } from "react-icons/io5";
+import { IoCloseOutline, IoCall } from "react-icons/io5";
+import { IoLogoWhatsapp } from "react-icons/io";
 import YooApp from './svgs/YooApp';
 
 const Header = () => {
@@ -130,20 +131,45 @@ const Header = () => {
 
       <Offcanvas className="offcanvas-menu" show={showMenu} onHide={handleCloseMenu} placement={'end'}>
         <Offcanvas.Body>
-          <Container>
+          <Container className='h-100'>
             {
               (isContacts)
-              ? <>
-                <div className="d-flex mb-4">
-                  <button type='button' onClick={()=>setIsContacts(false)} className='main-color-60 fs-12 d-flex align-items-center'>
-                    <HiOutlineArrowLeftCircle className='fs-14'/>
-                    <span className='ms-1'>Назад</span>
-                  </button>
-                  <h5 className='flex-1 text-center fs-12 fw-6 mb-0'>Контакты</h5>
+              ? <div className='h-100 d-flex flex-column justify-content-between'>
+                <div>
+                  <div className="d-flex mb-4">
+                    <button type='button' onClick={()=>setIsContacts(false)} className='main-color-60 fs-12 d-flex align-items-center'>
+                      <HiOutlineArrowLeftCircle className='fs-14'/>
+                      <span className='ms-1'>Назад</span>
+                    </button>
+                    <h5 className='flex-1 text-center fs-12 fw-6 mb-0 me-5'>Контакты</h5>
+                  </div>
+                  <h5 className='fs-12 fw-6 mb-4'>ООО “Вкусные решения”, г. Казань</h5>
+                  <div className="box fs-12">
+                    <ul className='list-unstyled'>
+                      <li className='mb-4'>
+                        <h6 className='mb-2'>Авиастроительный</h6>
+                        <address className='mb-2'><span className='main-color'>•</span> ул. Белинского, 1</address>
+                        <p className='main-color mt-2'>Доставка и самовывоз</p>
+                        <p>08:00 — 00:00</p>
+                        <p className='main-color mt-2'>Ресторан</p>
+                        <p>08:00 — 00:00</p>
+                      </li>
+                    </ul>
+                    <button type='button' className='btn-5 rounded w-100'>Посмотреть на карте</button>
+                  </div>
                 </div>
-                <h5 className='text-center fs-12 fw-6'>ООО “Вкусные решения”, г. Казань</h5>
-              
-              </>
+
+                <div>
+                  <button type='button' className='fs-12 btn-6 w-100 rounded justify-content-start mt-3'>
+                    <IoCall className='fs-15 me-2'/>
+                    <span>Позвонить</span>
+                  </button>
+                  <button type='button' className='fs-12 btn-3 w-100 rounded justify-content-start mt-2'>
+                    <IoLogoWhatsapp className='fs-15 me-2'/>
+                    <span>Написать в WhatsApp</span>
+                  </button>
+                </div>
+              </div>
               : <>
               <img src="imgs/slider-main/slide-1.jpg" alt="Большие пиццы" className='menu-offer'/>
               <nav>

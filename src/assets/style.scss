@@ -17,10 +17,14 @@
   }
 }
 
+// "homepage": "https://ngf93.github.io/yoo",
+
 $main-font: "Open Sans";
 $radius: 1.25em;
 $main-color: #0077FF;
 $red: #E01E00;
+$orange: #FF9D17;
+$green: #00AB55;
 $black: #1C1C1C;
 $dark: #373737;
 $dark-gray: #637381;
@@ -98,6 +102,34 @@ $transition: 300ms ease-in;
 @mixin lightShadow {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
 }
+@mixin scrollCustomized {
+  scrollbar-color: $light-gray transparent;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: $white;
+    @include shadow();
+    &:hover,
+    &:active {
+      background: rgba($color: $main-color, $alpha: 0.05);
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $light-gray;
+    border-radius: 5px;
+    transition: 0.2s;
+    &:hover, &:active {
+      background: rgba($color: $main-color, $alpha: 0.15)
+    }
+  }
+  &::-webkit-scrollbar-button:vertical:start:decrement,
+  &::-webkit-scrollbar-button:vertical:end:increment,
+  &::-webkit-scrollbar-button:horizontal:start:decrement,
+  &::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
+  }
+}
 
 
 /* Typography */
@@ -132,6 +164,9 @@ h4 {
   font-size: 1.875em;
   font-weight: 400;
   margin-bottom: .5em;
+  @include media-breakpoint-down(md) {
+    font-size: 1.7em;
+  }
   @include media-breakpoint-down(sm) {
     font-size: 1.5em;
   }
@@ -187,6 +222,9 @@ h6 {
 .gray {
   color: $gray;
 }
+.red {color: $red;}
+.orange {color: $orange;}
+.green {color: $green;}
 .main-color {
   color: $main-color;
 }
@@ -242,11 +280,43 @@ button {
       background-color: $black;
     }
   }
+  /* кнопка c черной обводкой */
+  &-30 {
+    @extend .btn;
+    color: $black;
+    background-color: $white;
+    border: 1px solid $black;
+    font-weight: 600;
+    &:hover, &:focus, &:active, &.active {
+      color: #fff;
+      background-color: $black;
+    }
+  }
   /* белая кнопка */
   &-4 {
     @extend .btn;
     color: $black;
     background-color: rgba($color: #fff, $alpha: .87);
+    &:hover, &:focus, &:active, &.active {
+      color: #fff;
+      background-color: $main-color;
+    }
+  }
+  /* зеленая кнопка */
+  &-5 {
+    @extend .btn;
+    color: $green;
+    background-color: rgba($color: $green, $alpha: 0.1);
+    &:hover, &:focus, &:active, &.active {
+      color: #fff;
+      background-color: $green;
+    }
+  }
+  /* светло-голубая кнопка */
+  &-6 {
+    @extend .btn;
+    color: $main-color;
+    background-color: rgba($color: $main-color, $alpha: 0.1);
     &:hover, &:focus, &:active, &.active {
       color: #fff;
       background-color: $main-color;
@@ -434,7 +504,7 @@ header {
   nav {
     --pad: 40px;
     background-color: $white;
-    // padding: 1em var(--pad);
+    padding: 0px var(--pad);
     @include shadow();
     border-radius: 0px 0px $radius $radius;
     width: calc(100% + var(--pad)*2);
@@ -548,6 +618,12 @@ header {
           }
         }
       }
+    }
+    .box {
+      background-color: $white;
+      @include lightShadow();
+      padding: 1em;
+      border-radius: $radius*0.25;
     }
   }
 }
@@ -847,9 +923,6 @@ main {
 .sec-5 {
   position: relative;
   overflow: hidden;
-  @include media-breakpoint-down(md) {
-    display: none;
-  }
   .product-slider {
     overflow: visible;
     padding: 1em 0px;
@@ -857,29 +930,54 @@ main {
       width: fit-content;
     }
   }
-  .product-card-mini {
-    padding: 1em;
-    @include shadow();
-    border-radius: $radius;
-    @include flex(row, flex-start, stretch, nowrap);
-    img {
-      @include rounedImg(130px, $radius, scale-down);
-      margin-right: $radius;
+}
+.product-card-mini {
+  padding: 1em;
+  @include shadow();
+  border-radius: $radius;
+  @include flex(row, flex-start, stretch, nowrap);
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+  }
+  img {
+    --card-mini-w: 130px;
+    @include rounedImg(var(--card-mini-w), $radius, scale-down);
+    margin-right: $radius;
+    @include media-breakpoint-down(lg) {
+      --card-mini-w: 200px;
+      margin-right: 0px;
     }
-    figcaption {
-      @include flex(column, space-between, stretch, nowrap);
-      a {
-        transition: $transition;
-        &:hover {
-          color: $main-color;
-        }
+  }
+  figcaption {
+    @include flex(column, space-between, stretch, nowrap);
+    a {
+      transition: $transition;
+      &:hover {
+        color: $main-color;
       }
     }
   }
 }
 
 .sec-6 {
+  --offer-w: 415px;
+  @include media-breakpoint-down(xxl) {
+    --offer-w: 355px;
+  }
+  @include media-breakpoint-down(xl) {
+    --offer-w: 300px;
+  }
+  @include media-breakpoint-down(lg) {
+    --offer-w: 310px;
+  }
+  @include media-breakpoint-down(md) {
+    --offer-w: 240px;
+  }
+  @include media-breakpoint-down(sm) {
+    --offer-w: 41vw;
+  }
   .offer {
+    width: 100%;
     position: relative;
     @include shadow();
     transition: 200ms linear;
@@ -887,23 +985,9 @@ main {
       position: relative;
       z-index: 1;
       width: 100%;
-      height: 420px;
+      height: var(--offer-w);
       object-fit: cover;
       border-radius: $radius;
-      @include media-breakpoint-down(xxl) {
-        height: 380px;
-      }
-      @include media-breakpoint-down(xl) {
-        height: 320px;
-      }
-      @include media-breakpoint-down(lg) {
-        height: 280px;
-        width: 280px;
-      }
-      @include media-breakpoint-down(sm) {
-        height: 190px;
-        width: 190px;
-      }
     }
     figcaption {
       @include absBG(10);
@@ -915,6 +999,11 @@ main {
       }
       @include media-breakpoint-down(sm) {
         font-size: 11px;
+      }
+      h6 {
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
       }
     }
   }
@@ -928,9 +1017,7 @@ main {
       }
     }
     .swiper-slide {
-      @include media-breakpoint-down(lg) {
-        width: fit-content;
-      }
+      width: var(--offer-w);
       @include media-breakpoint-up(lg) {
         &:nth-child(odd){
           .offer {transform: rotate(3deg);}
@@ -939,6 +1026,35 @@ main {
           .offer {transform: rotate(-3deg);}
         }
       }
+    }
+  }
+}
+
+
+.sec-7 {
+  .box {
+    height: 700px;
+    @include flex(column, flex-start, stretch, nowrap);
+  }
+  ul {
+    flex: 1;
+    overflow: auto;
+    @include scrollCustomized();
+    li {
+      border-bottom: 1px solid $light-gray;
+      padding: 1.5em 0px;
+    }
+  }
+  .map {
+    border-radius: $radius;
+    overflow: hidden;
+    @include safariFix();
+    @include flex();
+    height: 700px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }

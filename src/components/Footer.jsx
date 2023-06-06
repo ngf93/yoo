@@ -35,7 +35,7 @@ const Footer = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/offers'>
+                <NavLink to='/promo'>
                   <FlameIcon/>
                   <span>Акции</span>
                 </NavLink>
@@ -66,7 +66,7 @@ const Footer = () => {
                   <Link to='/'>Вакансии</Link>
                 </li>
                 <li className='ms-4'>
-                  <Link to='/'>Контакты</Link>
+                  <Link to='/contacts'>Контакты</Link>
                 </li>
               </ul>
               <Link to='/' className='d-block mt-4'>Политика конфиденциальности</Link>

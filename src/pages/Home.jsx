@@ -137,7 +137,7 @@ const Home = () => {
         </section>
       </Container>
 
-      <section className='sec-5 mb-5'>
+      <section className='sec-5 d-none d-md-block mb-5'>
         <Container>
           <h2>Часто заказывают</h2>
           <Swiper
@@ -184,11 +184,11 @@ const Home = () => {
             breakpoints={{
               576: {
                 slidesPerView: 'auto',
-                spaceBetween: 15,
+                spaceBetween: 7,
               },
               768: {
                 slidesPerView: 'auto',
-                spaceBetween: 20,
+                spaceBetween: 10,
               },
               992: {
                 slidesPerView: 3,
@@ -206,6 +206,7 @@ const Home = () => {
               <Offer blackText={true} img={"imgs/offers/offer3.jpg"} title={'Свежих ягод много бывает'} subtitle={'Попробуйте наш фирменный тарт — мы добавили в него ещё больше клубники!'}/>
             </SwiperSlide>
           </Swiper>
+          <Link to='/promo' className='btn-30 mt-4 mx-auto'>смотреть все акции</Link>
         </Container>
       </section>
     </main>
