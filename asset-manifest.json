@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/yoo/static/css/main.3946b4fb.css",
-    "main.js": "/yoo/static/js/main.b484616a.js",
+    "main.css": "/yoo/static/css/main.6ebd3ac6.css",
+    "main.js": "/yoo/static/js/main.02ba0772.js",
     "static/media/phone.png": "/yoo/static/media/phone.c241d7b248fc5ad46338.png",
     "static/media/choose.svg": "/yoo/static/media/choose.c9c1df8457eb9387a030f1df6468d844.svg",
     "static/media/googleplay-black.svg": "/yoo/static/media/googleplay-black.50ebd3e11344254b42d480729666b4ac.svg",
@@ -15,11 +15,11 @@
     "index.html": "/yoo/index.html",
     "static/media/curve.svg": "/yoo/static/media/curve.7dcc5f42b7d9ef4dbb44.svg",
     "static/media/trapezoid.svg": "/yoo/static/media/trapezoid.cad6f25a61f117eb0de8.svg",
-    "main.3946b4fb.css.map": "/yoo/static/css/main.3946b4fb.css.map",
-    "main.b484616a.js.map": "/yoo/static/js/main.b484616a.js.map"
+    "main.6ebd3ac6.css.map": "/yoo/static/css/main.6ebd3ac6.css.map",
+    "main.02ba0772.js.map": "/yoo/static/js/main.02ba0772.js.map"
   },
   "entrypoints": [
-    "static/css/main.3946b4fb.css",
-    "static/js/main.b484616a.js"
+    "static/css/main.6ebd3ac6.css",
+    "static/js/main.02ba0772.js"
   ]
 }
