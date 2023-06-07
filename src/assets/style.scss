@@ -151,6 +151,9 @@ h1, h2 {
   font-size: 1.75em;
   font-weight: 600;
   margin-bottom: 1em;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.35em;
+  }
 }
 h3 {
   font-size: 2.25em;
@@ -312,13 +315,23 @@ button {
       background-color: $green;
     }
   }
-  /* светло-голубая кнопка */
+  /* прозрачно-голубая кнопка */
   &-6 {
     @extend .btn;
     color: $main-color;
     background-color: rgba($color: $main-color, $alpha: 0.1);
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
+      background-color: $main-color;
+    }
+  }
+  /* светло-голубая кнопка */
+  &-7 {
+    @extend .btn;
+    color: $white;
+    background-color: rgba($color: $main-color, $alpha: 0.6);
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
       background-color: $main-color;
     }
   }
@@ -707,6 +720,11 @@ main {
       height: 800px;
       object-fit: cover;
       border-radius: $radius*0.5;
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0px;
+      }
     }
   }
 }
@@ -714,6 +732,10 @@ main {
   .modal {
     &-dialog {
       max-width: 450px;
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+        margin: 0px;
+      }
     }
     &-content {
       background-color: transparent;
@@ -726,10 +748,16 @@ main {
       .swiper-stories-modal {
         position: unset;
         width: 450px;
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
         .swiper-button {
           bottom: 50%;
           transform: translateY(50%);
           font-size: 2em;
+          @include media-breakpoint-down(md) {
+            display: none;
+          }
           svg {
             fill: transparent;
           }
@@ -756,6 +784,7 @@ main {
         }
       }
       .close {
+        z-index: 10;
         position: absolute;
         top: 0px;
         left: calc(100% + 0.25em);
@@ -765,6 +794,11 @@ main {
         transition: $transition;
         background-color: transparent;
         border-radius: $radius*0.15;
+        @include media-breakpoint-down(md) {
+          left: unset;
+          right: 0.5em;
+          top: 1em;
+        }
         &:hover, &:focus, &:active {
           color: $red;
           background-color: $white;
@@ -932,12 +966,17 @@ main {
   }
 }
 .product-card-mini {
+  width: 380px;
   padding: 1em;
   @include shadow();
   border-radius: $radius;
   @include flex(row, flex-start, stretch, nowrap);
   @include media-breakpoint-down(lg) {
     flex-direction: column;
+    width: calc(200px + 2em);
+  }
+  @include media-breakpoint-down(sm) {
+    width: calc(145px + 2em);
   }
   img {
     --card-mini-w: 130px;
@@ -947,9 +986,18 @@ main {
       --card-mini-w: 200px;
       margin-right: 0px;
     }
+    @include media-breakpoint-down(sm) {
+      --card-mini-w: 145px;
+    }
   }
   figcaption {
+    flex: 1;
     @include flex(column, space-between, stretch, nowrap);
+    h6 {
+      @include media-breakpoint-down(sm) {
+        font-weight: 400;
+      }
+    }
     a {
       transition: $transition;
       &:hover {
@@ -961,6 +1009,7 @@ main {
 
 .sec-6 {
   --offer-w: 415px;
+  overflow: hidden;
   @include media-breakpoint-down(xxl) {
     --offer-w: 355px;
   }
@@ -971,10 +1020,10 @@ main {
     --offer-w: 310px;
   }
   @include media-breakpoint-down(md) {
-    --offer-w: 240px;
+    --offer-w: 450px;
   }
   @include media-breakpoint-down(sm) {
-    --offer-w: 41vw;
+    --offer-w: 82vw;
   }
   .offer {
     width: 100%;
@@ -997,8 +1046,18 @@ main {
       @include media-breakpoint-down(xl) {
         padding: 1em;
       }
+    }
+    &:not(.full) {
+      @include media-breakpoint-down(md) {
+        --offer-w: 240px;
+      }
       @include media-breakpoint-down(sm) {
-        font-size: 11px;
+        --offer-w: 41vw;
+      }
+      figcaption {
+        @include media-breakpoint-down(sm) {
+          font-size: 10px;
+        }
       }
       h6 {
         @include media-breakpoint-down(md) {
@@ -1010,6 +1069,9 @@ main {
   .sw-offers {
     @include media-breakpoint-up(lg) {
       padding: 1em;
+    }
+    @include media-breakpoint-down(lg) {
+      overflow: visible;
     }
     &:hover {
       .offer {
@@ -1025,6 +1087,83 @@ main {
         &:nth-child(even){
           .offer {transform: rotate(-3deg);}
         }
+      }
+    }
+  }
+  .offer-page-img {
+    width: 100%;
+    height: var(--offer-w);
+    border-radius: $radius;
+  }
+  .box {
+    @include shadow();
+    padding: 2em;
+    border-radius: $radius;
+    font-size: 1.2em;
+    @include media-breakpoint-down(xl) {
+      font-size: 1.1em;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 1em;
+    }
+    p {
+      &:not(:first-child){
+        margin-top: 1em;
+      }
+    }
+  }
+  .offer-product {
+    padding: 1.25em 0px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px auto 280px;
+    grid-template-rows: auto;
+    gap: 1em;
+    grid-template-areas: "img about price";
+    @include media-breakpoint-down(xxl) {
+      grid-template-columns: 100px auto 250px;
+    }
+    @include media-breakpoint-down(xl) {
+      grid-template-columns: 100px auto 210px;
+    }
+    @include media-breakpoint-down(md) {
+      grid-template-columns: 120px auto;
+      grid-template-rows: auto;
+      grid-template-areas: "img about" "img price";
+    }
+    &-img {
+      grid-area: img;
+      img {
+        width: 100%;
+      }
+    }
+    &-about {
+      grid-area: about;
+      p {
+        color: $dark-gray;
+        margin-bottom: .5em;
+        @include media-breakpoint-down(sm) {
+          font-size: .9em;
+        }
+      }
+    }
+    &-price {
+      grid-area: price;
+      @include flex(row, flex-end, flex-start, nowrap);
+      font-size: 1.2em;
+      @include media-breakpoint-down(xxl) {
+        font-size: 1.1em;
+      }
+      @include media-breakpoint-down(md) {
+        justify-content: space-between;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 1em;
+      }
+    }
+    &s-list{
+      li:not(:first-child){
+        border-top: 1px solid $light-gray;
       }
     }
   }
@@ -1068,7 +1207,7 @@ footer {
     color: $dark-gray;
     @include shadow();
     position: fixed;
-    bottom: 0px;
+    bottom: -1px;
     left: 0px;
     width: 100%;
     z-index: 1050;

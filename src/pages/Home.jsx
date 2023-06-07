@@ -142,9 +142,14 @@ const Home = () => {
           <h2>Часто заказывают</h2>
           <Swiper
             className='product-slider'
-            spaceBetween={20}
+            spaceBetween={10}
             slidesPerView={'auto'}
             speed={750}
+            breakpoints={{
+              576: {
+                spaceBetween: 20,
+              },
+            }}
           >
             <SwiperSlide>
               <ProductCardMini/>

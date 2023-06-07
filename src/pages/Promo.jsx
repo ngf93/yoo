@@ -23,7 +23,7 @@ const Promo = () => {
               <Offer blackText={true} img={"imgs/offers/offer3.jpg"} title={'Свежих ягод много бывает'} subtitle={'Попробуйте наш фирменный тарт — мы добавили в него ещё больше клубники!'}/>
             </Col>
             <Col>
-              <Offer blackText={false} img={"imgs/offers/offer1.jpg"} title={'Весна пришла'} subtitle={'А с ней новые вкусы роллов!'}/>
+              <Offer blackText={false} img={"imgs/offers/offer4.jpg"} title={'Акция «Счастливые часы»'} subtitle={'Скидка 20% на весь ассортимент японской кухни*'}/>
             </Col>
             <Col>
               <Offer blackText={false} img={"imgs/offers/offer2.jpg"} title={'Пицца «Гаваи»'} subtitle={'Улётный микс из курицы и ананаса'}/>
@@ -40,9 +40,14 @@ const Promo = () => {
           <h2>Вам может понравиться</h2>
           <Swiper
             className='product-slider'
-            spaceBetween={20}
+            spaceBetween={10}
             slidesPerView={'auto'}
             speed={750}
+            breakpoints={{
+              576: {
+                spaceBetween: 20,
+              },
+            }}
           >
             <SwiperSlide>
               <ProductCardMini/>
