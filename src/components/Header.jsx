@@ -55,7 +55,7 @@ const Header = () => {
                     />
                   </li>
                   <li className='ms-3'>
-                    <button type='button' className='btn-1 py-2'>Меню</button>
+                    <Link to='/menu' className='btn-1 py-2'>Меню</Link>
                   </li>
                 </ul>
                 <ul className='text-menu'>
@@ -105,7 +105,7 @@ const Header = () => {
                   <li>
                     <Link to="/" className='position-relative'>
                       <HiOutlineShoppingBag/>
-                      <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill">2</span>
+                      <span className="position-absolute top-100 start-100 translate-middle badge rounded-pill">2</span>
                     </Link>
                   </li>
                   <li>

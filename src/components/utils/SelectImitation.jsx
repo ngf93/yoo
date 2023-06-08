@@ -28,7 +28,10 @@ const SelectImitation = (props) => {
           {
             (options.find(item => item.defaultChecked === true))
             ? <>
-              <img src={options.find(item => item.defaultChecked === true).icon} alt="" className={props.imgClass}/>
+              {
+                (options.find(item => item.defaultChecked === true).icon) &&
+                <img src={options.find(item => item.defaultChecked === true).icon} alt="" className={props.imgClass}/>
+              }
               <span>{options.find(item => item.defaultChecked === true).label}</span>
             </>
             : <span className='gray'>Выберите</span>
@@ -48,7 +51,10 @@ const SelectImitation = (props) => {
                 value={obj.value} 
                 onChange={() => handleChange(obj.value)}
                 hidden />
-                <img src={obj.icon} alt="" className={props.imgClass}/>
+                {
+                  (obj.icon) &&
+                  <img src={obj.icon} alt="" className={props.imgClass}/>
+                }
                 <div>{obj.label}</div>
               </label>
             </li>

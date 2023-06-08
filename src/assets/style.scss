@@ -100,7 +100,7 @@ $transition: 300ms ease-in;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
 }
 @mixin lightShadow {
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
 }
 @mixin scrollCustomized {
   scrollbar-color: $light-gray transparent;
@@ -219,18 +219,13 @@ h6 {
   &-8 {font-weight: 800;}
   &-9 {font-weight: 900;}
 }
-.black {
-  color: $black;
-}
-.gray {
-  color: $gray;
-}
+.black {color: $black;}
+.dark-gray {color: $dark-gray;}
+.gray {color: $gray;}
 .red {color: $red;}
 .orange {color: $orange;}
 .green {color: $green;}
-.main-color {
-  color: $main-color;
-}
+.main-color {color: $main-color;}
 .main-color-60 {
   color: rgba($color: $main-color, $alpha: 0.6);
 }
@@ -260,6 +255,17 @@ button {
     &:hover, &:focus, &:active, &.active {
       color: #fff;
       background-color: darken($color: $main-color, $amount: 10%);
+    }
+  }
+  /* кнопка c голубой обводкой */
+  &-10 {
+    @extend .btn;
+    color: $main-color;
+    background-color: $white;
+    border: 1px solid $main-color;
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
+      background-color: $main-color;
     }
   }
   /* красная кнопка */
@@ -335,6 +341,38 @@ button {
       background-color: $main-color;
     }
   }
+  /* белая кнопка c тенью */
+  &-8 {
+    @extend .btn;
+    background-color: $white;
+    @include lightShadow();
+    color: $black;
+    svg {
+      color: $main-color;
+      transition: $transition;
+    }
+    &:hover, &:focus, &:active, &.active {
+      background-color: $main-color;
+      color: $white;
+      svg {color: $white;}
+    }
+  }
+  /* кнопка c серой обводкой */
+  &-90 {
+    @extend .btn;
+    color: $black;
+    background-color: $white;
+    border: 1px solid $gray;
+    font-weight: 600;
+    &:hover, &:focus {
+      @include shadow();
+    }
+    &:active, &.active {
+      color: #fff;
+      background-color: $main-color;
+      border: 1px solid $main-color;
+    }
+  }
   &[disabled]{
     background: $light-gray;
     color: $dark;
@@ -356,6 +394,7 @@ label {
     border: 1px solid $main-color;
     border-radius: $radius;
     padding: .45em 1em;
+    height: 100%;
     &.borderless {
       border: none;
     }
@@ -964,6 +1003,14 @@ main {
       width: fit-content;
     }
   }
+  .divider {
+    background-color: rgba($gray, $alpha: 0.5);
+    height: 1px;
+    width: 100%;
+    margin: 3em 0px 4em;
+    border: none;
+    opacity: 1;
+  }
 }
 .product-card-mini {
   width: 380px;
@@ -1006,6 +1053,112 @@ main {
     }
   }
 }
+.categories {
+  padding: .75em;
+  @include shadow();
+  background-color: $white;
+  border-radius: $radius;
+  @include flex(row, space-between, flex-start, nowrap);
+  &-slider {
+    margin-left: 0px;
+    width: 75%;
+    position: relative;
+    padding: .75em;
+    .swiper-slide {
+      width: fit-content;
+    }
+    .swiper-button {
+      color: $main-color;
+    }
+  }
+  .btn-8 {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+.product {
+  &-img {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1em;
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: scale-down;
+      object-position: center;
+      border-radius: $radius;
+    }
+  }
+  &-stickers {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    @include list();
+    @include flex(row, flex-start, center, wrap);
+    li {
+      &:not(:first-child){
+        margin-left: .25em;
+      }
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+  }
+  &-tags {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    @include list();
+    @include flex(column, flex-start, flex-end, wrap);
+    li {
+      &:not(:first-child){
+        margin-top: .35em;
+      }
+      div {
+        border: 1px solid currentColor;
+        font-weight: 600;
+        font-size: .9em;
+        padding: 0.5em 1em;
+        background-color: rgba($color: $white, $alpha: 0.75);
+        border-radius: $radius;
+        transform: rotate(-3.5deg);
+        &.new {
+          color: $red;
+        }
+        &.hit {
+          color: $orange;
+        }
+      }
+    }
+  }
+  &-fav {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-size: 1.75em;
+    @include flex();
+    svg {
+      stroke-width: 1px;
+      stroke: $dark-gray;
+      fill: transparent;
+      transition: all $transition;
+    }
+    &.active {
+      svg {
+        stroke: $main-color;
+        fill: rgba($main-color, 0.3);
+      }
+    }
+  }
+  hr {
+    background-color: $light-gray;
+    height: 1px;
+    border: none;
+    opacity: 1;
+  }
+}
+
 
 .sec-6 {
   --offer-w: 415px;
@@ -1197,6 +1350,7 @@ main {
     }
   }
 }
+
 
 footer {
   height: var(--f-height);
