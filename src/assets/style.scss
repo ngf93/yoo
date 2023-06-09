@@ -25,6 +25,7 @@ $main-color: #0077FF;
 $red: #E01E00;
 $orange: #FF9D17;
 $green: #00AB55;
+$yellow: #FEF8BE;
 $black: #1C1C1C;
 $dark: #373737;
 $dark-gray: #637381;
@@ -514,6 +515,9 @@ label {
     &-disabled {
       opacity: 0;
     }
+    &-lock {
+      display: none;
+    }
   }
   &.paginated {
     padding-bottom: 1.75em;
@@ -522,6 +526,28 @@ label {
     }
   }
 }
+
+.notice {
+  background-color: $yellow;
+  border-radius: $radius;
+  padding: 2em;
+  @include shadow();
+  position: relative;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  padding-right: 8em;
+  &::after {
+    content: '';
+    background: url(../assets/imgs/lightning.png) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: -0.5em;
+    right: 0.5em;
+    height: calc(100% + 1em);
+    width: 6em;
+  }
+}
+
 
 body {
   margin: 0;
@@ -1059,21 +1085,122 @@ main {
   background-color: $white;
   border-radius: $radius;
   @include flex(row, space-between, flex-start, nowrap);
+  @include media-breakpoint-down(lg) {
+    padding: 0em;
+    box-shadow: none;
+  }
   &-slider {
     margin-left: 0px;
-    width: 75%;
+    width: 83%;
     position: relative;
     padding: .75em;
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
     .swiper-slide {
       width: fit-content;
     }
     .swiper-button {
       color: $main-color;
+      bottom: 50%;
+      transform: translateY(50%);
+      svg {
+        fill: $white;
+      }
+    }
+    &-disabled {
+      .swiper-wrapper {
+        flex-wrap: wrap;
+        transform: unset !important;
+      }
+      .swiper-slide {
+        margin-bottom: 1em;
+      }
     }
   }
   .btn-8 {
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1em;
+  }
+  &-btn {
+    color: $main-color;
+    @include flex();
+    padding: 1.5em 0px;
+    margin-left: 2em;
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+  }
+}
+.filter-line {
+  @include flex(row, space-between, center, nowrap);
+  margin-bottom: 3em;
+  @include media-breakpoint-down(lg) {
+    align-items: stretch;
+  }
+  .title {
+    margin-bottom: 0px;
+    margin-right: 1.5em;
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+  }
+  .subcategories-list {
+    @include list();
+    @include flex(row, flex-start, center, wrap);
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+    li {
+      margin-right: 1em;
+    }
+  }
+  .btn-search {
+    margin-right: auto;
+    @include media-breakpoint-down(lg) {
+      order: 2;
+      margin-right: 1.5em;
+      margin-left: auto;
+    }
+    svg {
+      font-size: 1.5em;
+      @include media-breakpoint-down(lg) {
+        font-size: 1.75em;
+      }
+    }
+  }
+  .btn-filter {
+    margin-left: auto;
+    margin-right: 1.5em;
+    @include media-breakpoint-down(lg) {
+      order: 3;
+      margin-left: unset;
+    }
+    svg {
+      font-size: 1.5em;
+      @include media-breakpoint-down(lg) {
+        font-size: 1.75em;
+      }
+    }
+  }
+  .select {
+    @include media-breakpoint-down(lg) {
+      order: 1;
+    }
+  }
+  .btn-subcategories {
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+    @include media-breakpoint-down(lg) {
+      order: 4;
+    }
+    svg {
+      font-size: 1.5em;
+      @include media-breakpoint-down(lg) {
+        font-size: 1.75em;
+      }
+    }
   }
 }
 .product {
@@ -1087,6 +1214,12 @@ main {
       object-fit: scale-down;
       object-position: center;
       border-radius: $radius;
+      @include media-breakpoint-down(xxl) {
+        height: 230px;
+      }
+      @include media-breakpoint-down(xl) {
+        height: 210px;
+      }
     }
   }
   &-stickers {
@@ -1095,6 +1228,9 @@ main {
     left: 1em;
     @include list();
     @include flex(row, flex-start, center, wrap);
+    @include media-breakpoint-down(xl) {
+      left: 0px;
+    }
     li {
       &:not(:first-child){
         margin-left: .25em;
@@ -1111,6 +1247,9 @@ main {
     right: 1em;
     @include list();
     @include flex(column, flex-start, flex-end, wrap);
+    @include media-breakpoint-down(xl) {
+      right: 0px;
+    }
     li {
       &:not(:first-child){
         margin-top: .35em;
@@ -1138,6 +1277,9 @@ main {
     right: 1em;
     font-size: 1.75em;
     @include flex();
+    @include media-breakpoint-down(xl) {
+      right: 0.5em;
+    }
     svg {
       stroke-width: 1px;
       stroke: $dark-gray;
