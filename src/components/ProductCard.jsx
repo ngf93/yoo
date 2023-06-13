@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import { HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi2";
 import Fish from '../assets/imgs/fish.png';
 import Halal from '../assets/imgs/halal.png';
@@ -15,7 +16,9 @@ const ProductCard = () => {
   return (
     <div className="product">
       <div className="product-img">
-        <img src="imgs/img3.png" alt="Ролл «Филадельфия»"/>
+        <Link to='/menu/product'>
+          <img src="imgs/img3.png" alt="Ролл «Филадельфия»"/>
+        </Link>
         <ul className="product-stickers">
           <li>
             <img src={Fish} alt="рыба" />

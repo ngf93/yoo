@@ -22,7 +22,7 @@ const SelectImitation = (props) => {
   useOnClickOutside(ref, () => setShowOptions(false));
 
   return (
-    <div ref={ref} className='select'>
+    <div ref={ref} className={'select '+props.boxClass}>
       <button type='button' onClick={()=>setShowOptions(!showOptions)} className={'select-button '+props.btnClass}>
         <div className="select-button-value">
           {

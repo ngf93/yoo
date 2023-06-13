@@ -6702,6 +6702,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, label, span, a, button,
   }
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 h1, .h1, h2, .h2 {
   font-size: 1.75em;
   font-weight: 600;
@@ -8242,6 +8247,10 @@ main {
   height: 1px;
   border: none;
   opacity: 1;
+}
+
+.productPage-img {
+  width: 100%;
 }
 
 .sec-6 {

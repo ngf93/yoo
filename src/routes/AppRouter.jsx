@@ -7,12 +7,14 @@ import Contacts from '../pages/Contacts'
 import Promo from '../pages/Promo'
 import OfferPage from '../pages/OfferPage'
 import Catalog from '../pages/Catalog'
+import Product from '../pages/Product'
 
 const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
       <Route index element={<Home />}/>
       <Route path="menu" element={<Catalog/>} />
+      <Route path="menu/product" element={<Product/>} />
       <Route path="promo" element={<Promo/>} />
       <Route path="promo/:id" element={<OfferPage/>} />
       <Route path="contacts" element={<Contacts/>} />

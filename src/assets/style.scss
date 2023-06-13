@@ -152,6 +152,9 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
     width: 100%;
   }
 }
+.w-fit {
+  width: fit-content;
+}
 
 h1, h2 {
   font-size: 1.75em;
@@ -1364,6 +1367,11 @@ main {
     height: 1px;
     border: none;
     opacity: 1;
+  }
+}
+.productPage {
+  &-img {
+    width: 100%;
   }
 }
 
