@@ -6696,6 +6696,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, label, span, a, button,
   flex: 1;
 }
 
+@media (max-width: 575.98px) {
+  .w-xs-100 {
+    width: 100%;
+  }
+}
+
 h1, .h1, h2, .h2 {
   font-size: 1.75em;
   font-weight: 600;
@@ -6750,7 +6756,7 @@ h6, .h6 {
   font-weight: 600;
   margin-bottom: 0.5em;
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   h6, .h6 {
     font-size: 1em;
   }
@@ -6887,7 +6893,7 @@ button {
   transition: 300ms ease-in;
   width: -moz-fit-content;
   width: fit-content;
-  border-radius: 1.25em;
+  border-radius: 1.875em;
   /* голубая кнопка */
   /* кнопка c голубой обводкой */
   /* красная кнопка */
@@ -6980,6 +6986,11 @@ button {
   background-color: #fff;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
   color: #1C1C1C;
+}
+@media (max-width: 991.98px) {
+  .btn-8 {
+    background-color: #F4F6F8;
+  }
 }
 .btn-8 svg {
   color: #0077FF;
@@ -7194,6 +7205,14 @@ label span {
   margin-bottom: 2em;
   padding-right: 8em;
 }
+@media (max-width: 575.98px) {
+  .notice {
+    margin-bottom: 1em;
+    padding: 1.25em;
+    padding-right: 4em;
+    border-radius: 0.625em;
+  }
+}
 .notice::after {
   content: "";
   background: url(../assets/imgs/lightning.png) no-repeat center;
@@ -7203,6 +7222,12 @@ label span {
   right: 0.5em;
   height: calc(100% + 1em);
   width: 6em;
+}
+@media (max-width: 575.98px) {
+  .notice::after {
+    right: -0.5em;
+    width: 5em;
+  }
 }
 
 body {
@@ -7902,6 +7927,11 @@ main {
   bottom: 50%;
   transform: translateY(50%);
 }
+@media (max-width: 991.98px) {
+  .categories-slider .swiper-button, .categories-slider .swiper-button-prev, .categories-slider .swiper-button-next {
+    display: none;
+  }
+}
 .categories-slider .swiper-button svg, .categories-slider .swiper-button-prev svg, .categories-slider .swiper-button-next svg {
   fill: #fff;
 }
@@ -7915,6 +7945,14 @@ main {
 .categories .btn-8 {
   width: 100%;
   font-size: 1em;
+}
+.categories .btn-8 svg {
+  font-size: 1.5em;
+}
+@media (max-width: 575.98px) {
+  .categories .btn-8 svg {
+    font-size: 1.75em;
+  }
 }
 .categories-btn {
   color: #0077FF;
@@ -7945,6 +7983,12 @@ main {
     align-items: stretch;
   }
 }
+@media (max-width: 575.98px) {
+  .filter-line {
+    align-items: center;
+    margin-bottom: 1.5em;
+  }
+}
 .filter-line .title {
   margin-bottom: 0px;
   margin-right: 1.5em;
@@ -7973,12 +8017,23 @@ main {
 }
 .filter-line .btn-search {
   margin-right: auto;
+  padding: 0.55em;
+  color: #637381;
+}
+.filter-line .btn-search:hover, .filter-line .btn-search:active {
+  color: #fff;
 }
 @media (max-width: 991.98px) {
   .filter-line .btn-search {
     order: 2;
     margin-right: 1.5em;
     margin-left: auto;
+  }
+}
+@media (max-width: 575.98px) {
+  .filter-line .btn-search {
+    margin-right: 1em;
+    padding: 0.35em;
   }
 }
 .filter-line .btn-search svg {
@@ -7992,11 +8047,18 @@ main {
 .filter-line .btn-filter {
   margin-left: auto;
   margin-right: 1.5em;
+  padding: 0.55em;
 }
 @media (max-width: 991.98px) {
   .filter-line .btn-filter {
     order: 3;
     margin-left: unset;
+  }
+}
+@media (max-width: 575.98px) {
+  .filter-line .btn-filter {
+    margin-right: 1em;
+    padding: 0.35em;
   }
 }
 .filter-line .btn-filter svg {
@@ -8012,6 +8074,9 @@ main {
     order: 1;
   }
 }
+.filter-line .btn-subcategories {
+  padding: 0.55em;
+}
 @media (min-width: 992px) {
   .filter-line .btn-subcategories {
     display: none;
@@ -8020,6 +8085,11 @@ main {
 @media (max-width: 991.98px) {
   .filter-line .btn-subcategories {
     order: 4;
+  }
+}
+@media (max-width: 575.98px) {
+  .filter-line .btn-subcategories {
+    padding: 0.35em;
   }
 }
 .filter-line .btn-subcategories svg {
@@ -8055,6 +8125,16 @@ main {
     height: 210px;
   }
 }
+@media (max-width: 767.98px) {
+  .product-img img {
+    height: 155px;
+  }
+}
+@media (max-width: 575.98px) {
+  .product-img img {
+    height: 43vw;
+  }
+}
 .product-stickers {
   position: absolute;
   top: 1em;
@@ -8078,6 +8158,12 @@ main {
 .product-stickers li img {
   width: 2.5em;
   height: 2.5em;
+}
+@media (max-width: 767.98px) {
+  .product-stickers li img {
+    width: 2em;
+    height: 2em;
+  }
 }
 .product-tags {
   position: absolute;
@@ -8108,6 +8194,11 @@ main {
   border-radius: 1.25em;
   transform: rotate(-3.5deg);
 }
+@media (max-width: 767.98px) {
+  .product-tags li div {
+    font-size: 0.75em;
+  }
+}
 .product-tags li div.new {
   color: #E01E00;
 }
@@ -8128,6 +8219,12 @@ main {
 @media (max-width: 1199.98px) {
   .product-fav {
     right: 0.5em;
+  }
+}
+@media (max-width: 767.98px) {
+  .product-fav {
+    bottom: 0em;
+    right: 0em;
   }
 }
 .product-fav svg {

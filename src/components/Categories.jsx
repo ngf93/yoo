@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import useIsMobile from '../hooks/isMobile';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,8 +11,6 @@ import FoodDesserts from '../components/svgs/FoodDesserts';
 import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle,HiOutlineArrowUturnDown, HiArrowUturnUp } from "react-icons/hi2";
 
 const Categories = (props) => {
-  const isMobileLG = useIsMobile('991px');
-
   const [isFull, setIsFull] = useState(false);
   const [swiper, setSwiper] = useState(null);
   const handleExpand = () => {
@@ -25,10 +22,6 @@ const Categories = (props) => {
     setIsFull(false);
   };
   
-  // if(isMobileLG){
-  //   setIsFull(false)
-  // }
-
   return (
     <div className={"categories "+props.className}>
       <Swiper
@@ -47,6 +40,9 @@ const Categories = (props) => {
         }}
         onSwiper={setSwiper}
         breakpoints={{
+          576: {
+            spaceBetween: 30,
+          },
           1200: {
             spaceBetween: 30,
           },
@@ -66,25 +62,25 @@ const Categories = (props) => {
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodPizza className="fs-15"/>
+            <FoodPizza/>
             <span className='ms-2'>Пицца</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodCombo className="fs-15"/>
+            <FoodCombo/>
             <span className='ms-2'>Комбо</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodDesserts className="fs-15"/>
+            <FoodDesserts/>
             <span className='ms-2'>Десерты</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodPoke className="fs-15"/>
+            <FoodPoke/>
             <span className='ms-2'>Поке</span>
           </button>
         </SwiperSlide>
@@ -102,25 +98,25 @@ const Categories = (props) => {
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodPizza className="fs-15"/>
+            <FoodPizza/>
             <span className='ms-2'>Пицца</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodCombo className="fs-15"/>
+            <FoodCombo/>
             <span className='ms-2'>Комбо</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodDesserts className="fs-15"/>
+            <FoodDesserts/>
             <span className='ms-2'>Десерты</span>
           </button>
         </SwiperSlide>
         <SwiperSlide>
           <button type='button' className='btn-8'>
-            <FoodPoke className="fs-15"/>
+            <FoodPoke/>
             <span className='ms-2'>Поке</span>
           </button>
         </SwiperSlide>
