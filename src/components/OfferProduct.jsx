@@ -9,11 +9,11 @@ const OfferProduct = () => {
 
   return (
     <div className="offer-product">
-      <Link to='/' className="offer-product-img">
+      <Link to='/menu/product' className="offer-product-img">
         <img src="imgs/img3.png" alt="Ролл «Филадельфия»" />
       </Link>
       <div className="offer-product-about">
-        <h6>Ролл «Филадельфия»</h6>
+        <h6><Link to='/menu/product'>Ролл «Филадельфия»</Link></h6>
         <p>Лосось, помело, сыр сливочный, соус гуакамоле, соус васаби, соус манго чили, темпура, </p>
         {
           (!isMobileMD) &&

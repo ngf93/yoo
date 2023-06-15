@@ -117,7 +117,7 @@ $transition: 300ms ease-in;
     }
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $light-gray;
+    background-color: #DFE2E5;
     border-radius: 5px;
     transition: 0.2s;
     &:hover, &:active {
@@ -240,6 +240,123 @@ h6 {
 }
 
 /* Form elements */
+input, textarea {
+  background-color: rgba($white, $alpha: .8);
+  border: 1px solid $light-gray;
+  border-radius: $radius*0.5;
+  padding: 0.725em 1.65em;
+  width: 100%;
+  outline: none;
+  display: block;
+  transition: $transition;
+  @include placeholder($light-gray, 400);
+  &:hover, &:focus, &:active {
+    border: 1px solid $gray;
+  }
+}
+input {
+  &[type='checkbox'], &[type='radio']{
+    @include no-appearance;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $main-color;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: none;
+    padding: 0px;
+    margin: 0px;
+    transition: $transition;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background-color: $main-color;
+      transition: $transition;
+      opacity: 0;
+    }
+    &:checked::before {
+      opacity: 1;
+    }
+  }
+}
+label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  span {flex:1;}
+}
+.inputGroup {
+  @include list();
+  @include flex(row, flex-start, center, nowrap);
+  width: fit-content;
+  background-color: $light-gray;
+  padding: .5em;
+  border-radius: .75em;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+  label {
+    cursor: pointer;
+    width: 100%;
+    .text {
+      width: 100%;
+      background-color: transparent;
+      border-radius: .25em;
+      padding: .7em 1em;
+      transition: $transition;
+      text-align: center;
+    }
+    input {
+      display: none;
+      &:checked + .text {
+        background-color: $white;
+      }
+    }
+  }
+  li {
+    position: relative;
+    @include media-breakpoint-down(md) {
+      flex-grow: 1;
+    }
+    &:not(:first-child){
+      margin-left: .5em;
+      padding-left: .5em;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 10%;
+        left: 0%;
+        height: 80%;
+        width: 0.5px;
+        background-color: $gray;
+      }
+    }
+    &:first-child {
+      label {
+        .text {
+          border-top-left-radius: .5em;
+          border-bottom-left-radius: .5em;
+        }
+      }
+    }
+    &:last-child {
+      label {
+        .text {
+          border-top-right-radius: .5em;
+          border-bottom-right-radius: .5em;
+        }
+      }
+    }
+  }
+ 
+}
+
+
 button {
   background: none;
   border: none;
@@ -290,12 +407,12 @@ button {
   /* черная кнопка */
   &-3 {
     @extend .btn;
-    color: rgba($color: #fff, $alpha: .87);
-    background-color: $dark;
+    color: $white;
+    background-color: #202020;
     font-weight: 600;
     &:hover, &:focus, &:active, &.active {
       color: #fff;
-      background-color: $black;
+      background-color: $main-color;
     }
   }
   /* кнопка c черной обводкой */
@@ -1370,11 +1487,164 @@ main {
   }
 }
 .productPage {
+  @include media-breakpoint-down(md) {
+    h1 {flex:1;}
+  }
   &-img {
     width: 100%;
+    height: 290px;
+    object-fit: scale-down;
+    border-radius: $radius;
+    @include media-breakpoint-down(xxl) {
+      height: 260px;
+    }
+    @include media-breakpoint-down(xl) {
+      height: 215px;
+    }
+    @include media-breakpoint-down(lg) {
+      height: 500px;
+      margin-bottom: 1em;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 85vw;
+    }
+  }
+  &-edit {
+    .top {
+      @include flex(row, flex-start, flex-end, nowrap);
+      button {
+        position: relative;
+        z-index: 1;
+        background-color: $dark-gray;
+        color: $white;
+        border-radius: $radius $radius 0px 0px;
+        height: calc($radius*2);
+        @include flex();
+        transition: $transition;
+        &:first-child {
+          padding: 0em 2.5em 0em 1.5em;
+        }
+        &:last-child {
+          padding: 0em 2.5em;
+          margin-left: -2em;
+        }
+        span {margin-left: .25em;}
+        .corner {
+          position: absolute;
+          z-index: 1;
+          bottom: 0px;
+          font-size: $radius;
+          color: $dark-gray;
+          transition: $transition;
+          &-right{
+            @extend .corner;
+            left: 100%;
+          }
+          &-left{
+            @extend .corner;
+            right: 100%;
+            transform: rotateY(180deg);
+          }
+        }
+        &.active {
+          background-color: $light-gray;
+          color: $black;
+          z-index: 2;
+          .corner {
+            color: $light-gray;
+          }
+        }
+      }
+    }
+    .box {
+      background-color: $light-gray;
+      padding: .75em;
+      border-radius: 0px $radius $radius $radius;
+      ul {
+        --mt: 5px;
+        --h: 60px;
+        @include list();
+        max-height: calc(var(--h) * 5 + var(--mt) * 4);
+        overflow: auto;
+        @include scrollCustomized();
+        padding-right: var(--mt);
+        @include media-breakpoint-down(xxl) {
+          --h: 54px;
+        }
+        @include media-breakpoint-down(xl) {
+          --h: 47.25px;
+        }
+        li {
+          &:not(:first-child){
+            margin-top: var(--mt);
+          }
+        }
+      }
+    }
+  }
+  &-price {
+    @include flex(row, flex-start, center, nowrap);
+    @include media-breakpoint-down(md) {
+      position: fixed;
+      bottom: calc(var(--f-height) - 2px);
+      left: 0px;
+      width: 100%;
+      height: 50px;
+      z-index: 100;
+      background-color: $white;
+      justify-content: center;
+      button {
+        width: 270px;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 0px 1.5em;
+      button {
+        width: 100%;
+        flex: 1;
+      }
+    }
+  }
+  .select-button {
+    padding: .6em 1em;
+  }
+  .notice {
+    padding: .75em 5em .75em 1em;
   }
 }
-
+.ingredient {
+  @include flex(row, flex-start, center, nowrap);
+  background-color: $white;
+  @include shadow();
+  border-radius: $radius*0.5;
+  padding: $radius*0.5;
+  @include media-breakpoint-down(xxl) {
+    font-size: .9em;
+  }
+  &-img {
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: cover;
+    border-radius: $radius*0.25;
+    margin-right: $radius*0.5;
+  }
+  &-title {
+    flex: 1;
+    line-height: 100%;
+  }
+  &-price {
+    font-weight: 600;
+    margin-left: $radius;
+    text-align: right;
+    @include media-breakpoint-down(xxl) {
+      margin-left: $radius*0.5;
+    }
+  }
+  button {
+    padding: .33em .6em;
+    margin-left: $radius*0.5;
+  }
+}
 
 .sec-6 {
   --offer-w: 415px;
