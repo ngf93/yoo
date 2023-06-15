@@ -48,6 +48,8 @@ $transition: 300ms ease-in;
   -moz-appearance: none;
   -ms-appearance: none;
   outline: none;
+  padding: 0px;
+  margin: 0px;
 }
 @mixin safariFix {
   -webkit-backface-visibility: hidden;
@@ -241,30 +243,45 @@ h6 {
 
 /* Form elements */
 input, textarea {
-  background-color: rgba($white, $alpha: .8);
+  background-color: $white;
   border: 1px solid $light-gray;
   border-radius: $radius*0.5;
-  padding: 0.725em 1.65em;
+  padding: .7em 1.2em;
   width: 100%;
   outline: none;
   display: block;
   transition: $transition;
   @include placeholder($light-gray, 400);
+  @include lightShadow();
   &:hover, &:focus, &:active {
     border: 1px solid $gray;
   }
 }
 input {
-  &[type='checkbox'], &[type='radio']{
+  &[type='checkbox'] {
     @include no-appearance;
-    width: 20px;
-    height: 20px;
+    width: $radius;
+    height: $radius;
     border: 1px solid $main-color;
-    background-color: transparent;
+    background-color: $white;
+    background-image: url(imgs/mark.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: calc($radius * 0.25);
+    box-shadow: none;
+    &:checked {
+      background-color: $main-color;
+    }
+  }
+  &[type='radio']{
+    @include no-appearance;
+    width: $radius;
+    height: $radius;
+    border: 1px solid $main-color;
+    background-color: $white;
     border-radius: 50%;
     box-shadow: none;
-    padding: 0px;
-    margin: 0px;
     transition: $transition;
     position: relative;
     &::before {
@@ -353,9 +370,7 @@ label {
       }
     }
   }
- 
 }
-
 
 button {
   background: none;
@@ -484,6 +499,18 @@ button {
       background-color: $main-color;
       color: $white;
       svg {color: $white;}
+    }
+  }
+  /* серая кнопка */
+  &-9 {
+    @extend .btn;
+    color: $white;
+    background-color: $gray;
+    border: 1px solid $gray;
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
+      background-color: $black;
+      border: 1px solid $black;
     }
   }
   /* кнопка c серой обводкой */
@@ -682,6 +709,64 @@ label {
     @include media-breakpoint-down(sm) {
       right: -0.5em;
       width: 5em;
+    }
+  }
+}
+
+.navTop {
+  margin-bottom: 2em;
+  color: rgba($color: $main-color, $alpha: 0.6);
+  @include flex(row, flex-start, center, wrap);
+  font-size: 1.125em;
+  &-back {
+    @include flex();
+    margin-right: 5em;
+    svg {
+      font-size: 1.35em;
+      stroke-width: 1.25px;
+      margin-right: .25em;
+    }
+  }
+  &-breadcrumbs {
+    @include flex(row, flex-start, baseline, wrap);
+    @include list();
+    li {
+      &:not(:first-child){
+        &::before {
+          content: '—';
+          margin: 0em .5em;
+        }
+      }
+    }
+  }
+}
+
+.gifts {
+  @include list();
+  @include flex(row, flex-start, center, nowrap);
+  margin: 2em 0px;
+  &-item {
+    flex-grow: 1;
+    @include flex();
+    &:not(:first-child) {
+      margin-left: $radius*0.35;
+    }
+    &-bar {
+      flex: 1;
+      height: $radius*0.5;
+      border-radius: $radius*0.25;
+      background-color: $light-gray;
+    }
+    &-icon {
+      background-color: $gray;
+      color: $white;
+      @include flex();
+      margin-left: $radius*0.35;
+      padding: 0.33em;
+      border-radius: 50%;
+      svg {
+        font-size: $radius;
+      }
     }
   }
 }
@@ -1834,6 +1919,23 @@ main {
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+
+.cart {
+  &-filter {
+    @include flex();
+    background-color: $white;
+    padding: 1em;
+    border-radius: $radius;
+    @include lightShadow();
+    margin-bottom: 2em;
+  }
+  &-item {
+    @include flex();
+    padding: 1em;
+    border-bottom: 1px solid $light-gray;
+    
   }
 }
 
