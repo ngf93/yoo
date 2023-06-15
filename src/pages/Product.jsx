@@ -13,6 +13,7 @@ import 'swiper/css';
 // icons & images
 import Corner from '../components/svgs/Corner';
 import { HiOutlineInformationCircle, HiOutlineShoppingBag, HiPlus, HiMinus } from "react-icons/hi2";
+import NavTop from '../components/utils/NavTop';
 
 
 const Product = () => {
@@ -21,6 +22,8 @@ const Product = () => {
   return (
     <main>
       <Container>
+        <NavTop toBack={true} breadcrumbs={true}/>
+
         <form className='productPage mb-5'>
           <Row className='gx-4 gx-xxl-5'>
             <Col xs={12} lg={3}>

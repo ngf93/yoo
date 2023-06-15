@@ -6878,14 +6878,15 @@ h6, .h6 {
 
 /* Form elements */
 input, textarea {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #fff;
   border: 1px solid #F4F6F8;
   border-radius: 0.625em;
-  padding: 0.725em 1.65em;
+  padding: 0.7em 1.2em;
   width: 100%;
   outline: none;
   display: block;
   transition: 300ms ease-in;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
 }
 input::-moz-placeholder, textarea::-moz-placeholder {
   color: #F4F6F8;
@@ -6899,24 +6900,46 @@ input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea
   border: 1px solid #C2C2C2;
 }
 
-input[type=checkbox], input[type=radio] {
+input[type=checkbox] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   outline: none;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #0077FF;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: none;
   padding: 0px;
   margin: 0px;
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid #0077FF;
+  background-color: #fff;
+  background-image: url(imgs/mark.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 0.3125em;
+  box-shadow: none;
+}
+input[type=checkbox]:checked {
+  background-color: #0077FF;
+}
+input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  outline: none;
+  padding: 0px;
+  margin: 0px;
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid #0077FF;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: none;
   transition: 300ms ease-in;
   position: relative;
 }
-input[type=checkbox]::before, input[type=radio]::before {
+input[type=radio]::before {
   content: "";
   position: absolute;
   top: 4px;
@@ -6928,7 +6951,7 @@ input[type=checkbox]::before, input[type=radio]::before {
   transition: 300ms ease-in;
   opacity: 0;
 }
-input[type=checkbox]:checked::before, input[type=radio]:checked::before {
+input[type=radio]:checked::before {
   opacity: 1;
 }
 
@@ -7018,7 +7041,7 @@ button {
   color: inherit;
 }
 
-.btn, .btn-90, .btn-8, .btn-7, .btn-6, .btn-5, .btn-4, .btn-30, .btn-3, .btn-2, .btn-10, .btn-1 {
+.btn, .btn-90, .btn-9, .btn-8, .btn-7, .btn-6, .btn-5, .btn-4, .btn-30, .btn-3, .btn-2, .btn-10, .btn-1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7040,6 +7063,7 @@ button {
   /* прозрачно-голубая кнопка */
   /* светло-голубая кнопка */
   /* белая кнопка c тенью */
+  /* серая кнопка */
   /* кнопка c серой обводкой */
 }
 .btn-1 {
@@ -7139,6 +7163,16 @@ button {
 .btn-8:hover svg, .btn-8:focus svg, .btn-8:active svg, .btn-8.active svg {
   color: #fff;
 }
+.btn-9 {
+  color: #fff;
+  background-color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+}
+.btn-9:hover, .btn-9:focus, .btn-9:active, .btn-9.active {
+  color: #fff;
+  background-color: #1C1C1C;
+  border: 1px solid #1C1C1C;
+}
 .btn-90 {
   color: #1C1C1C;
   background-color: #fff;
@@ -7153,7 +7187,7 @@ button {
   background-color: #0077FF;
   border: 1px solid #0077FF;
 }
-.btn[disabled], [disabled].btn-1, [disabled].btn-10, [disabled].btn-2, [disabled].btn-3, [disabled].btn-30, [disabled].btn-4, [disabled].btn-5, [disabled].btn-6, [disabled].btn-7, [disabled].btn-8, [disabled].btn-90 {
+.btn[disabled], [disabled].btn-1, [disabled].btn-10, [disabled].btn-2, [disabled].btn-3, [disabled].btn-30, [disabled].btn-4, [disabled].btn-5, [disabled].btn-6, [disabled].btn-7, [disabled].btn-8, [disabled].btn-9, [disabled].btn-90 {
   background: #F4F6F8;
   color: #373737;
 }
@@ -7364,6 +7398,86 @@ label span {
     right: -0.5em;
     width: 5em;
   }
+}
+
+.navTop {
+  margin-bottom: 2em;
+  color: rgba(0, 119, 255, 0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.125em;
+}
+.navTop-back {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-right: 5em;
+}
+.navTop-back svg {
+  font-size: 1.35em;
+  stroke-width: 1.25px;
+  margin-right: 0.25em;
+}
+.navTop-breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0px;
+}
+.navTop-breadcrumbs li:not(:first-child)::before {
+  content: "—";
+  margin: 0em 0.5em;
+}
+
+.gifts {
+  list-style: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 2em 0px;
+}
+.gifts-item {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.gifts-item:not(:first-child) {
+  margin-left: 0.4375em;
+}
+.gifts-item-bar {
+  flex: 1;
+  height: 0.625em;
+  border-radius: 0.3125em;
+  background-color: #F4F6F8;
+}
+.gifts-item-icon {
+  background-color: #C2C2C2;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 0.4375em;
+  padding: 0.33em;
+  border-radius: 50%;
+}
+.gifts-item-icon svg {
+  font-size: 1.25em;
 }
 
 body {
@@ -8860,6 +8974,28 @@ main {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.cart-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 1.25em;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2em;
+}
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1em;
+  border-bottom: 1px solid #F4F6F8;
 }
 
 footer {

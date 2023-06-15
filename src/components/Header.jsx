@@ -103,7 +103,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className='position-relative'>
+                    <Link to="/cart" className='position-relative'>
                       <HiOutlineShoppingBag/>
                       <span className="position-absolute top-100 start-100 translate-middle badge rounded-pill">2</span>
                     </Link>
