@@ -25,31 +25,33 @@ const Footer = () => {
               <li>
                 <NavLink to='/'>
                   <HomeIcon/>
-                  <span>Главная</span>
+                  <div className="text">
+                    <span>Главная</span>
+                  </div>
                 </NavLink>
               </li>
               <li>
                 <NavLink to='/notifications'>
                   <BellIcon/>
-                  <span>Уведомления</span>
+                  <div className="text"><span>Уведомления</span></div>
                 </NavLink>
               </li>
               <li>
                 <NavLink to='/promo'>
                   <FlameIcon/>
-                  <span>Акции</span>
+                  <div className="text"><span>Акции</span></div>
                 </NavLink>
               </li>
               <li>
                 <NavLink to='/cart'>
                   <CartIcon/>
-                  <span>Корзина</span>
+                  <div className="text"><span>Корзина</span></div>
                 </NavLink>
               </li>
               <li>
                 <NavLink to='/profile'>
                   <UserIcon/>
-                  <span>Аккаунт</span>
+                  <div className="text"><span>Аккаунт</span></div>
                 </NavLink>
               </li>
             </ul>
@@ -95,7 +97,6 @@ const Footer = () => {
           </div>
         }
       </Container>
-      
     </footer>
   );
 };

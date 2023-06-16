@@ -2189,7 +2189,6 @@ footer {
   color: $white;
   @include media-breakpoint-down(lg) {
     background-color: $white;
-    color: $dark-gray;
     @include shadow();
     position: fixed;
     bottom: -1px;
@@ -2216,22 +2215,28 @@ footer {
   }
   .mobile {
     a {
-      @include flex();
-      padding: 0.5em 0.75em;
+      @include flex(row, flex-start, center, nowrap);
+      padding: 0.5em;
       border-radius: $radius*0.5;
+      background-color: transparent;
+      transition: all $transition;
       svg {
         font-size: 1.6em;
+        color: $dark-gray;
+        transition: color $transition;
       }
-      span {
-        max-width: 0px;
-        overflow: hidden;
+      .text {
+        color: $white;
+        padding: 0 .5em;
+        display: none;
       }
       &.active {
         background-color: $main-color;
-        color: $white;
-        span {
-          max-width: fit-content;
-          margin-left: .75em;
+        svg {
+          color: $white;
+        }
+        .text {
+          display: block;
         }
       }
     }
