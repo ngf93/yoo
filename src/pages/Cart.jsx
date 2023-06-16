@@ -2,10 +2,11 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import {Link} from 'react-router-dom';
 import NavTop from '../components/utils/NavTop';
 import Gifts from '../components/utils/Gifts';
-import { HiOutlineTrash } from "react-icons/hi2";
-import { IoCaretDownOutline } from "react-icons/io5";
+import { HiOutlineTrash, HiXMark } from "react-icons/hi2";
+import CartItem from '../components/CartItem';
 
 const Cart = () => {
   return (
@@ -13,58 +14,62 @@ const Cart = () => {
       <Container>
         <NavTop toBack={true} breadcrumbs={false}/>
         <form className='cart'>
-          <Row className='gx-5'>
-            <Col md={8}>
-              <h1>Вы добавили 3 товара</h1>
+          <Row className='g-4 g-xxl-5'>
+            <Col xs={12} lg={8}>
+              <h1 className='text-center text-lg-start'>Вы добавили 3 товара</h1>
               <div className="cart-filter">
                 <label>
                   <input type="checkbox"/>
-                  <span className='fs-11 ms-2'>Все товары</span>
+                  <span className='fs-11 ms-2'>Все <span className='d-none d-sm-inline'>товары</span></span>
                 </label>
-                <button type='button' className='d-flex align-items-center gray ms-auto'>
-                  <HiOutlineTrash className='fs-15'/>
-                  <span className='fs-11 ms-2'>Удалить выбранные</span>
+                <button type='button' className='d-flex align-items-center dark-gray ms-auto'>
+                  <HiOutlineTrash className='fs-15 me-1 me-sm-2'/>
+                  <span className='d-md-none'>Удалить</span>
+                  <span className='d-none d-md-inline fs-11 ms-1'>Удалить выбранные</span>
                 </button>
-                <button type='button' className='btn-9 py-1 ms-5'>Очистить</button>
+                <button type='button' className='btn-9 py-1 ms-4 ms-sm-5'>Очистить</button>
               </div>
 
-              <ul className='list-unstyled row g-4'>
-                <li className='col'>
-                  <div className='cart-item'>
-                    <input type="checkbox"/>
-                    <img src="imgs/img3.png" alt="" />
-                    <div className='text'>
-                      <h6>Пепперони</h6>
-                      <p>Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус</p>
-                      <p>36 см</p>
-                      <button type='button' className='d-flex align-items-center'>
-                        <span>Показать ещё</span>
-                        <IoCaretDownOutline className='fs-08 ms-2'/>
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li className='col'>
-
-                </li>
+              <ul className='list-unstyled'>
+                <li><CartItem/></li>
+                <li><CartItem/></li>
+                <li><CartItem/></li>
+                <li><CartItem/></li>
               </ul>
             </Col>
-            <Col md={4}>
+            <Col xs={12} lg={4}>
               <div className='main-color fs-11 mb-1'>Комментарий</div>
-              <textarea rows="3" className='mb-3'>Уберите, пожалуйста, лук</textarea>
+              <textarea rows="3" className='mb-4'>Уберите, пожалуйста, лук</textarea>
 
               <div className='fs-11 mb-1'>Промокод</div>
-              <fieldset>
+              <fieldset className='promoCode mb-5'>
                 <input type="text" />
-                <button ty></button>
-                <button></button>
+                <button type='button' className='btn-1'>Применить</button>
+                <button type='button' className='clear'>
+                  <HiXMark/>
+                </button>
               </fieldset>
+
+              <div className="d-flex justify-content-between my-2">
+                <span>Стоимость товаров</span>
+                <span>1 880 ₽</span>
+              </div>
+              <div className="d-flex justify-content-between my-2">
+                <span>Доставка</span>
+                <span className='main-color'>бесплатно</span>
+              </div>
+              <hr className='my-3'/>
+              <div className="d-flex justify-content-between mb-5">
+                <span className='fw-6 fs-11'>Итоговая сумма</span>
+                <span className='fw-6'>1 880 ₽</span>
+              </div>
 
               <Gifts/>
 
-              <p>Добавьте товары на 268 ₽, чтобы получить подарок</p>
-              <div className='btn-6 w-100 rounded-3 mt-3'>34 бонуса будут начислены за этот заказ</div>
-              <button type='button' className='btn-3 mt-3 w-100'>Перейти к оформлению</button>
+              <div className='btn-6 fw-6 w-100 rounded-3 mt-3'>34 бонуса будут начислены за этот заказ</div>
+              <Link to='/checkout' className='btn-3 mt-3 w-100'>
+                <span className='fw-4'>Перейти к оформлению</span>
+              </Link>
             </Col>
           </Row>
         </form>

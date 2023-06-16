@@ -3,20 +3,23 @@ import { HiOutlineGift } from "react-icons/hi2";
 
 const Gifts = () => {
   return (
-    <ul className='gifts'>
-      <li className='gifts-item'>
-        <div className='gifts-item-bar'></div>
-        <div className='gifts-item-icon'><HiOutlineGift/></div>
-      </li>
-      <li className='gifts-item'>
-        <div className='gifts-item-bar'></div>
-        <div className='gifts-item-icon'><HiOutlineGift/></div>
-      </li>
-      <li className='gifts-item'>
-        <div className='gifts-item-bar'></div>
-        <div className='gifts-item-icon'><HiOutlineGift/></div>
-      </li>
-    </ul>
+    <div className='gifts'>
+      <ul>
+        <li className='full'>
+          <div className='bar'></div>
+          <div className='icon'><HiOutlineGift/></div>
+        </li>
+        <li className='full'>
+          <div className='bar'></div>
+          <div className='icon'><HiOutlineGift/></div>
+        </li>
+        <li className=''>
+          <div className='bar'></div>
+          <div className='icon'><HiOutlineGift/></div>
+        </li>
+      </ul>
+      <p className='mt-2'>Добавьте товары на 268 ₽, чтобы получить подарок</p>
+    </div>
   );
 };
 

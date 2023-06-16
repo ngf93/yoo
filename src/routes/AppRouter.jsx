@@ -9,6 +9,7 @@ import OfferPage from '../pages/OfferPage'
 import Catalog from '../pages/Catalog'
 import Product from '../pages/Product'
 import Cart from '../pages/Cart'
+import Checkout from '../pages/Checkout'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createHashRouter(
       <Route path="menu" element={<Catalog/>} />
       <Route path="menu/product" element={<Product/>} />
       <Route path="cart" element={<Cart/>} />
+      <Route path="checkout" element={<Checkout/>} />
       <Route path="promo" element={<Promo/>} />
       <Route path="promo/:id" element={<OfferPage/>} />
       <Route path="contacts" element={<Contacts/>} />

@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 import { HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi2";
 import Fish from '../assets/imgs/fish.png';
 import Halal from '../assets/imgs/halal.png';
-import Chicken from '../assets/imgs/chicken.png';
-import Meat from '../assets/imgs/meat.png';
-import Spicy from '../assets/imgs/pepper.png';
-import Vegetarian from '../assets/imgs/vegetarian.png';
+// import Chicken from '../assets/imgs/chicken.png';
+// import Meat from '../assets/imgs/meat.png';
+// import Spicy from '../assets/imgs/pepper.png';
+// import Vegetarian from '../assets/imgs/vegetarian.png';
 import useIsMobile from '../hooks/isMobile';
 
 const ProductCard = () => {
@@ -38,7 +38,7 @@ const ProductCard = () => {
         <button 
           type='button' 
           onClick={()=>setIsFav(!isFav)} 
-          className={(isFav) ? 'product-fav active' : 'product-fav'}
+          className={(isFav) ? 'btn-fav active' : 'btn-fav'}
         >
           <HiOutlineHeart/>
         </button>

@@ -149,13 +149,25 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
 
 .rotateY-180 {transform: rotateY(180deg);}
 .flex-1 {flex: 1;}
-.w-xs-100 {
-  @include media-breakpoint-down(sm) {
-    width: 100%;
+.w {
+  &-xs-100 {
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+  &-fit {
+    width: fit-content;
+  }
+  &-auto {
+    width: auto;
   }
 }
-.w-fit {
-  width: fit-content;
+hr {
+  background-color: $gray;
+  height: 0.5px;
+  width: 100%;
+  border: none;
+  opacity: 1;
 }
 
 h1, h2 {
@@ -251,7 +263,7 @@ input, textarea {
   outline: none;
   display: block;
   transition: $transition;
-  @include placeholder($light-gray, 400);
+  @include placeholder($gray, 400);
   @include lightShadow();
   &:hover, &:focus, &:active {
     border: 1px solid $gray;
@@ -272,6 +284,31 @@ input {
     box-shadow: none;
     &:checked {
       background-color: $main-color;
+    }
+    &[role="switch"]{
+      width: $radius*2.75;
+      height: $radius*1.45;
+      background-color: $green;
+      border: none;
+      border-radius: $radius;
+      background-image: none;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: $radius*0.1;
+        top: $radius*0.1;
+        height: $radius*1.25;
+        width: $radius*1.25;
+        background-color: $white;
+        border-radius: 50%;
+        transition: left $transition;
+      }
+      &:checked {
+        &::before {
+          left: $radius*1.4;
+        }
+      }
     }
   }
   &[type='radio']{
@@ -298,6 +335,14 @@ input {
     }
     &:checked::before {
       opacity: 1;
+    }
+  }
+  &[type=number]{
+    appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      @include no-appearance();
+      margin: 0;
     }
   }
 }
@@ -369,6 +414,67 @@ label {
         }
       }
     }
+  }
+}
+.countInput {
+  width: fit-content;
+  @include flex();
+  @include media-breakpoint-down(xl) {
+    font-size: 1.15em;
+  }
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  input {
+    padding: 0px;
+    height: $radius*1.5;
+    width: $radius*2;
+    text-align: center;
+    border-radius: $radius;
+    @include lightShadow();
+    margin: 0px $radius*0.25;
+    @include media-breakpoint-down(md) {
+      width: 100px;
+    }
+  }
+  button {
+    padding: .3em;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    border-radius: $radius;
+    color: $main-color;
+    height: $radius*1.5;
+    width: $radius*1.5;
+    @include flex();
+    @include lightShadow();
+    transition: $transition;
+    svg {font-size: .8em;}
+    &:hover, &:focus {
+      background-color: rgba($color: $main-color, $alpha: 0.1);
+      border: 1px solid rgba($color: $main-color, $alpha: 0.5);
+    }
+    &:active {
+      color: $white;
+      background-color: $main-color;
+      border: 1px solid $main-color;
+    }
+  }
+}
+.promoCode {
+  @include flex();
+  input {
+    flex: 1;
+    border-radius: $radius*0.5 0px 0px $radius*0.5;
+  }
+  .btn-1 {
+    border-radius: 0px $radius*0.5 $radius*0.5 0px;
+    padding: 0.75em;
+  }
+  .clear {
+    color: $dark-gray;
+    font-size: 1.5em;
+    margin-left: $radius*0.25;
   }
 }
 
@@ -532,6 +638,29 @@ button {
   &[disabled]{
     background: $light-gray;
     color: $dark;
+  }
+  &-fav {
+    font-size: 1.75em;
+    @include flex();
+    @include media-breakpoint-down(xl) {
+      right: 0.5em;
+    }
+    @include media-breakpoint-down(md) {
+      bottom: 0em;
+      right: 0em;
+    }
+    svg {
+      stroke-width: 1px;
+      stroke: $dark-gray;
+      fill: transparent;
+      transition: all $transition;
+    }
+    &.active {
+      svg {
+        stroke: $main-color;
+        fill: rgba($main-color, 0.3);
+      }
+    }
   }
 }
 label {
@@ -718,6 +847,13 @@ label {
   color: rgba($color: $main-color, $alpha: 0.6);
   @include flex(row, flex-start, center, wrap);
   font-size: 1.125em;
+  @include media-breakpoint-down(lg) {
+    margin-top: 1.5em;
+  }
+  @include media-breakpoint-down(sm) {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+  }
   &-back {
     @include flex();
     margin-right: 5em;
@@ -742,30 +878,57 @@ label {
 }
 
 .gifts {
-  @include list();
-  @include flex(row, flex-start, center, nowrap);
   margin: 2em 0px;
-  &-item {
-    flex-grow: 1;
-    @include flex();
-    &:not(:first-child) {
-      margin-left: $radius*0.35;
-    }
-    &-bar {
-      flex: 1;
-      height: $radius*0.5;
-      border-radius: $radius*0.25;
-      background-color: $light-gray;
-    }
-    &-icon {
-      background-color: $gray;
-      color: $white;
+  ul {
+    @include list();
+    @include flex(row, flex-start, center, nowrap);
+    li {
+      flex-grow: 1;
       @include flex();
-      margin-left: $radius*0.35;
-      padding: 0.33em;
-      border-radius: 50%;
-      svg {
-        font-size: $radius;
+      &:not(:first-child) {
+        margin-left: $radius*0.35;
+      }
+      .bar {
+        flex: 1;
+        height: $radius*0.5;
+        border-radius: $radius*0.25;
+        background-color: $light-gray;
+      }
+      .icon {
+        background-color: $gray;
+        color: $white;
+        @include flex();
+        margin-left: $radius*0.35;
+        padding: 0.33em;
+        border-radius: 50%;
+        svg {
+          font-size: $radius;
+        }
+      }
+      &.full {
+        .bar {
+          background-color: $main-color;
+        }
+        .icon {
+          background-color: $red;
+        }
+        + li:not(.full) {
+          .bar {
+            position: relative;
+            overflow: hidden;
+            @include safariFix();
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              height: 100%;
+              width: 80%;
+              border-radius: $radius*0.25;
+              background-image: linear-gradient(90deg, $main-color 40%, lighten($main-color, 40%) 100%);
+            }
+          }
+        }
       }
     }
   }
@@ -1538,31 +1701,11 @@ main {
       }
     }
   }
-  &-fav {
+  .btn-fav {
     position: absolute;
     bottom: 1em;
     right: 1em;
-    font-size: 1.75em;
-    @include flex();
-    @include media-breakpoint-down(xl) {
-      right: 0.5em;
-    }
-    @include media-breakpoint-down(md) {
-      bottom: 0em;
-      right: 0em;
-    }
-    svg {
-      stroke-width: 1px;
-      stroke: $dark-gray;
-      fill: transparent;
-      transition: all $transition;
-    }
-    &.active {
-      svg {
-        stroke: $main-color;
-        fill: rgba($main-color, 0.3);
-      }
-    }
+    z-index: 1;
   }
   hr {
     background-color: $light-gray;
@@ -1730,6 +1873,7 @@ main {
     margin-left: $radius*0.5;
   }
 }
+
 
 .sec-6 {
   --offer-w: 415px;
@@ -1922,20 +2066,119 @@ main {
   }
 }
 
+
 .cart {
+  margin-bottom: 3em;
   &-filter {
     @include flex();
     background-color: $white;
-    padding: 1em;
+    padding: .75em 1em;
     border-radius: $radius;
     @include lightShadow();
-    margin-bottom: 2em;
+    margin-bottom: .5em;
   }
   &-item {
-    @include flex();
-    padding: 1em;
+    position: relative;
+    @include flex(row, space-between, flex-start, nowrap);
+    padding: 1.5em 1em;
     border-bottom: 1px solid $light-gray;
-    
+    @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 1em 0em;
+    }
+    .left {
+      @include flex(row, flex-start, flex-start, nowrap);
+      width: 60%;
+      @include media-breakpoint-down(xxl) {
+        width: 65%;
+      }
+      @include media-breakpoint-down(md) {
+        width: 100%;
+        align-items: center;
+      }
+      .text {
+        flex: 1;
+        h6 {
+          width: fit-content;
+          .tag {
+            float: right;
+            color: $main-color;
+            font-size: 0.75em;
+            border: 1px solid $main-color;
+            border-radius: $radius;
+            padding: 0.3em 0.6em;
+            transform: rotate(-3.5deg);
+            margin-left: 1em;
+            @include media-breakpoint-down(sm) {
+              position: absolute;
+              top: 1em;
+              left: $radius*1.5;
+            }
+          }
+        }
+        p {
+          color: $dark-gray;
+          margin-bottom: .5em;
+          &.consist {
+            @include clamp(2, 1.2em, true);
+            @include media-breakpoint-down(sm) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      @include flex(row, space-between, flex-start, nowrap);
+      width: 35%;
+      @include media-breakpoint-down(md) {
+        width: 100%;
+        margin-top: 1em;
+        align-items: center;
+      }
+      @include media-breakpoint-down(sm) {
+        margin-top: .5em;
+      }
+      .btn-fav {
+        order: 3;
+      }
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: $radius*0.25;
+      margin-right: 1em;
+    }
+  }
+  &-box {
+    background-color: $light-gray;
+    padding: 1em;
+    border-radius: $radius;
+  }
+}
+.checkoutProduct {
+  font-size: .9em;
+  background-color: $white;
+  padding: $radius*0.5;
+  border-radius: $radius;
+  @include flex();
+  @include shadow();
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: $radius*0.5;
+    margin-right: 1em;
+  }
+  &-count {
+    border: 1px solid $light-gray;
+    padding: .33em .8em;
+    background-color: $white;
+    border-radius: $radius;
+    margin-left: $radius;
   }
 }
 
