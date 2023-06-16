@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Container from 'react-bootstrap/Container';
 import {Link} from 'react-router-dom';
@@ -17,14 +17,24 @@ import MenuDocs from './svgs/MenuDocs';
 import { IoCloseOutline, IoCall } from "react-icons/io5";
 import { IoLogoWhatsapp } from "react-icons/io";
 import YooApp from './svgs/YooApp';
+import useOnClickOutside from '../hooks/useOnClickOutside';
 
 const Header = () => {
+  
   const isMobileLG = useIsMobile('991px');
   const [showMenu, setShowMenu] = useState(false);
-  const handleCloseMenu = () => setShowMenu(false);
-  const handleShowMenu = () => setShowMenu(true);
-
+  const handleCloseMenu = () => {
+    console.log('close');
+    setShowMenu(!showMenu);
+  };
+  const handleShowMenu = () => {
+    console.log('open');
+    setShowMenu(!showMenu);
+  };
   const [isContacts, setIsContacts] = useState(false);
+
+  const ref = useRef();
+  useOnClickOutside(ref, ()=>setShowMenu(false));
 
   return (
     <>
@@ -115,13 +125,22 @@ const Header = () => {
                   </li>
                 </>
                 : <li>
-                  <button type='button' onClick={(showMenu) ? handleCloseMenu : handleShowMenu} className='btn-menu'>
+                  {
+                    (showMenu)
+                    ? <button ref={ref} type='button' onClick={handleCloseMenu} className='btn-menu'>
+                    <IoCloseOutline/>
+                  </button>
+                    : <button ref={ref} type='button' onClick={handleShowMenu} className='btn-menu'>
+                    <MenuIcon/>
+                  </button>
+                  }
+                  {/* <button ref={ref} type='button' onClick={(showMenu) ? handleCloseMenu : handleShowMenu} className='btn-menu'>
                     {
                       (showMenu)
                       ? <IoCloseOutline/>
                       : <MenuIcon/>
                     }
-                  </button>
+                  </button> */}
                 </li>
               }
             </ul>
@@ -131,7 +150,7 @@ const Header = () => {
 
       <Offcanvas className="offcanvas-menu" show={showMenu} onHide={handleCloseMenu} placement={'end'}>
         <Offcanvas.Body>
-          <Container className='h-100'>
+          <Container ref={ref} className='h-100'>
             {
               (isContacts)
               ? <div className='h-100 d-flex flex-column justify-content-between'>
@@ -202,10 +221,9 @@ const Header = () => {
               </nav>
 
               <p className="gray text-center mt-4 mt-md-5">Разработано на платформе</p>
-              <p className='text-center mt-2'><a href><YooApp/></a></p>
+              <p className='text-center mt-2'><YooApp/></p>
               </>
             }
-              
           </Container>
         </Offcanvas.Body>
       </Offcanvas>

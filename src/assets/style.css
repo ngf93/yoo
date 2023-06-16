@@ -6935,7 +6935,7 @@ input[type=checkbox]:checked {
 input[type=checkbox][role=switch] {
   width: 3.4375em;
   height: 1.8125em;
-  background-color: #00AB55;
+  background-color: #C2C2C2;
   border: none;
   border-radius: 1.25em;
   background-image: none;
@@ -6951,6 +6951,9 @@ input[type=checkbox][role=switch]::before {
   background-color: #fff;
   border-radius: 50%;
   transition: left 300ms ease-in;
+}
+input[type=checkbox][role=switch]:checked {
+  background-color: #00AB55;
 }
 input[type=checkbox][role=switch]:checked::before {
   left: 1.75em;

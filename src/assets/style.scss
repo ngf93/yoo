@@ -288,7 +288,7 @@ input {
     &[role="switch"]{
       width: $radius*2.75;
       height: $radius*1.45;
-      background-color: $green;
+      background-color: $gray;
       border: none;
       border-radius: $radius;
       background-image: none;
@@ -305,6 +305,7 @@ input {
         transition: left $transition;
       }
       &:checked {
+        background-color: $green;
         &::before {
           left: $radius*1.4;
         }

@@ -39,7 +39,7 @@ const Cart = () => {
             </Col>
             <Col xs={12} lg={4}>
               <div className='main-color fs-11 mb-1'>Комментарий</div>
-              <textarea rows="3" className='mb-4'>Уберите, пожалуйста, лук</textarea>
+              <textarea rows="3" defaultValue={'Уберите, пожалуйста, лук'} className='mb-4'></textarea>
 
               <div className='fs-11 mb-1'>Промокод</div>
               <fieldset className='promoCode mb-5'>
