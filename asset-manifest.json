@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/yoo/static/css/main.6ebd3ac6.css",
-    "main.js": "/yoo/static/js/main.02ba0772.js",
+    "main.css": "/yoo/static/css/main.c9cbc2ab.css",
+    "main.js": "/yoo/static/js/main.83e5093d.js",
     "static/media/phone.png": "/yoo/static/media/phone.c241d7b248fc5ad46338.png",
+    "static/media/lightning.png": "/yoo/static/media/lightning.691e1175a36eaf9fbfa8.png",
     "static/media/choose.svg": "/yoo/static/media/choose.c9c1df8457eb9387a030f1df6468d844.svg",
     "static/media/googleplay-black.svg": "/yoo/static/media/googleplay-black.50ebd3e11344254b42d480729666b4ac.svg",
     "static/media/googleplay.svg": "/yoo/static/media/googleplay.966bf49453851d08a6a45832abef9e55.svg",
@@ -15,11 +16,12 @@
     "index.html": "/yoo/index.html",
     "static/media/curve.svg": "/yoo/static/media/curve.7dcc5f42b7d9ef4dbb44.svg",
     "static/media/trapezoid.svg": "/yoo/static/media/trapezoid.cad6f25a61f117eb0de8.svg",
-    "main.6ebd3ac6.css.map": "/yoo/static/css/main.6ebd3ac6.css.map",
-    "main.02ba0772.js.map": "/yoo/static/js/main.02ba0772.js.map"
+    "static/media/mark.svg": "/yoo/static/media/mark.0b3031d05d6780bc0ac3.svg",
+    "main.c9cbc2ab.css.map": "/yoo/static/css/main.c9cbc2ab.css.map",
+    "main.83e5093d.js.map": "/yoo/static/js/main.83e5093d.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ebd3ac6.css",
-    "static/js/main.02ba0772.js"
+    "static/css/main.c9cbc2ab.css",
+    "static/js/main.83e5093d.js"
   ]
 }
