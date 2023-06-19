@@ -1151,11 +1151,12 @@ main {
     display: block;
     margin: 0 auto 1em;
     @include rounedImg(var(--w));
-    border: 2px solid #fff;
-    outline: 3px solid rgba($color: $main-color, $alpha: 0.3);
+    background-color: $white;
+    padding: 2px;
+    border: 3px solid rgba($color: $main-color, $alpha: 0.3);
     @include media-breakpoint-down(md) {
-      border: 1px solid #fff;
-      outline: 2px solid rgba($color: $main-color, $alpha: 0.3);
+      padding: 1px;
+      border: 2px solid rgba($color: $main-color, $alpha: 0.3);
     }
   }
   figcaption {
@@ -1174,7 +1175,7 @@ main {
       border-radius: $radius*0.5;
       @include media-breakpoint-down(sm) {
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 4em);
         border-radius: 0px;
       }
     }
@@ -1186,7 +1187,7 @@ main {
       max-width: 450px;
       @include media-breakpoint-down(sm) {
         max-width: 100%;
-        margin: 0px;
+        margin: 2em 1em;
       }
     }
     &-content {
@@ -1275,21 +1276,25 @@ main {
       border-radius: 0px;
       box-shadow: none;
     }
-    .btn-view {
-      position: relative;
-      color: $gray;
-      font-size: 1.5em;
-      svg {
-        position: relative;
-        z-index: 10;
-      }
-      img {
-        position: absolute;
-        bottom: 0px;
-        right: -4.5em;
-        z-index: 1;
-      }
-    }
+  }
+}
+.btn-view {
+  position: relative;
+  color: $gray;
+  font-size: 1.5em;
+  @include flex();
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+  svg {
+    position: relative;
+    z-index: 10;
+  }
+  img {
+    position: absolute;
+    bottom: 0px;
+    right: -4.5em;
+    z-index: 1;
   }
 }
 .category-card {
@@ -1408,21 +1413,12 @@ main {
 
 .sec-5 {
   position: relative;
-  overflow: hidden;
   .product-slider {
     overflow: visible;
     padding: 1em 0px;
     .swiper-slide {
       width: fit-content;
     }
-  }
-  .divider {
-    background-color: rgba($gray, $alpha: 0.5);
-    height: 1px;
-    width: 100%;
-    margin: 3em 0px 4em;
-    border: none;
-    opacity: 1;
   }
 }
 .product-card-mini {
@@ -1466,19 +1462,35 @@ main {
     }
   }
 }
-.categories {
-  padding: .75em;
+.sticky-box {
+  position: sticky;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: .5em .75em;
   @include shadow();
   background-color: $white;
   border-radius: $radius;
-  @include flex(row, space-between, flex-start, nowrap);
+  @include flex(row, space-between, center, nowrap);
   @include media-breakpoint-down(lg) {
     padding: 0em;
     box-shadow: none;
   }
+}
+.categories {
+  @include flex(row, space-between, flex-start, nowrap);
+  max-width: 100%;
+  flex: 1;
+  &.w-90 {
+    max-width: 90%;
+    @include media-breakpoint-down(lg) {
+      max-width: 100%;
+    }
+  }
   &-slider {
-    margin-left: 0px;
-    width: 83%;
+    margin: 0px;
+    width: 80%;
     position: relative;
     padding: .75em;
     @include media-breakpoint-down(lg) {
@@ -1521,11 +1533,18 @@ main {
   &-btn {
     color: $main-color;
     @include flex();
-    padding: 1.5em 0px;
+    padding: 1.3em 0px;
     margin-left: 2em;
     @include media-breakpoint-down(lg) {
       display: none;
     }
+  }
+}
+.CategoryGroup {
+  &:not(:last-child){
+    padding-bottom: 3em;
+    margin-bottom: 4em;
+    border-bottom: 1px solid rgba($color: $gray, $alpha: 0.5);
   }
 }
 .filter-line {

@@ -1,21 +1,17 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import {Link} from 'react-router-dom';
 import StoriesSection from '../components/StoriesSection';
-import CategoryCard from '../components/CategoryCard';
 import ProductCardMini from '../components/ProductCardMini';
 import Offer from '../components/Offer';
-import GridIcon from '../components/svgs/GridIcon';
 import AppStore from '../assets/imgs/appstore-black.svg';
 import GooglePlay from '../assets/imgs/googleplay-black.svg';
 import Phone from '../assets/imgs/phone.png';
-import Choose from '../assets/imgs/choose.svg';
-import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle, HiOutlineArrowUturnDown } from "react-icons/hi2";
+import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle } from "react-icons/hi2";
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Section3 from '../components/Section3';
 
 const Home = () => {
   return (
@@ -82,34 +78,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='sec-3 mb-5'>
-        <Container className='box'>
-          <button type='button' className='d-none d-md-flex btn-view mb-3 ms-auto me-5'>
-            <img src={Choose} alt="Choose"/>
-            <GridIcon/>
-          </button>
-          <Row xs={2} md={3} xl={4} className='g-3 g-sm-4'>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-            <Col><CategoryCard/></Col>
-          </Row>
-          <button type='button' className='main-color mx-auto mt-4'>
-            <span>показать все</span>
-            <HiOutlineArrowUturnDown className='fs-15 ms-3 main-color rotateY-180'/>
-          </button>
-        </Container>
-      </section>
+      <Section3/>
 
-      <Container>
+      <Container className='overflow-hidden'>
         <section className='sec-4 mb-5'>
           <h3>Заказывать стало <br className='d-lg-none'/>ещё&nbsp;удобнее!</h3>
           <div className="d-flex align-items-center mb-3 mb-lg-4">
