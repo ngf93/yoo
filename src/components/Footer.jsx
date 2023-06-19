@@ -21,7 +21,7 @@ const Footer = () => {
         {
           (isMobileLG)
           ? <nav className='h-100 mobile'>
-            <ul className="h-100 list-unstyled d-flex justify-content-between align-items-center">
+            <ul>
               <li>
                 <NavLink to='/'>
                   <HomeIcon/>

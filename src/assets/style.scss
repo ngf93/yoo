@@ -2215,29 +2215,47 @@ footer {
     }
   }
   .mobile {
-    a {
-      @include flex(row, flex-start, center, nowrap);
-      padding: 0.5em;
-      border-radius: $radius*0.5;
-      background-color: transparent;
-      transition: all $transition;
-      svg {
-        font-size: 1.6em;
-        color: $dark-gray;
-        transition: color $transition;
-      }
-      .text {
-        color: $white;
-        padding: 0 .5em;
-        display: none;
-      }
-      &.active {
-        background-color: $main-color;
-        svg {
-          color: $white;
-        }
-        .text {
-          display: block;
+    ul {
+      height: 100%;
+      @include list();
+      @include flex(row, space-between, center, nowrap);
+      li {
+        a {
+          @include flex(row, flex-start, center, nowrap);
+          padding: 0.5em;
+          border-radius: $radius*0.5;
+          background-color: transparent;
+          
+          max-width: 2.6em;
+          height: 2.6em;
+          overflow: hidden;
+          transition: all $transition;
+          svg {
+            // font-size: 1.6em;
+            width: 1.6em !important;
+            height: 1.6em !important;
+            color: $dark-gray;
+            transition: color $transition;
+          }
+          .text {
+            color: $white;
+            // padding: 0 .5em;
+            overflow: hidden;
+            max-width: 0px;
+            // display: none;
+            transition: max-width $transition;
+          }
+          &.active {
+            background-color: $main-color;
+            max-width: 130px;
+            svg {
+              color: $white;
+            }
+            .text {
+              display: block;
+              max-width: fit-content;
+            }
+          }
         }
       }
     }

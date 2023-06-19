@@ -9348,7 +9348,17 @@ footer .desktop a {
 footer .desktop a:hover {
   color: #66adff;
 }
-footer .mobile a {
+footer .mobile ul {
+  height: 100%;
+  list-style: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+footer .mobile ul li a {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -9357,24 +9367,32 @@ footer .mobile a {
   padding: 0.5em;
   border-radius: 0.625em;
   background-color: transparent;
+  max-width: 2.6em;
+  height: 2.6em;
+  overflow: hidden;
   transition: all 300ms ease-in;
 }
-footer .mobile a svg {
-  font-size: 1.6em;
+footer .mobile ul li a svg {
+  width: 1.6em !important;
+  height: 1.6em !important;
   color: #637381;
   transition: color 300ms ease-in;
 }
-footer .mobile a .text {
+footer .mobile ul li a .text {
   color: #fff;
-  padding: 0 0.5em;
-  display: none;
+  overflow: hidden;
+  max-width: 0px;
+  transition: max-width 300ms ease-in;
 }
-footer .mobile a.active {
+footer .mobile ul li a.active {
   background-color: #0077FF;
+  max-width: 130px;
 }
-footer .mobile a.active svg {
+footer .mobile ul li a.active svg {
   color: #fff;
 }
-footer .mobile a.active .text {
+footer .mobile ul li a.active .text {
   display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }/*# sourceMappingURL=style.css.map */
