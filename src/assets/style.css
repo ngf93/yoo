@@ -7412,7 +7412,6 @@ label span {
   display: block;
   z-index: 5;
   position: absolute;
-  top: calc(100% + 0.5em);
   left: 0%;
   width: -moz-fit-content;
   width: fit-content;
@@ -7426,11 +7425,22 @@ label span {
   isolation: isolate;
   transform: translateZ(0);
 }
+.select-options[data-observing=false] {
+  bottom: calc(100% + 0.5em);
+  top: unset;
+}
+.select-options[data-observing=true] {
+  top: calc(100% + 0.5em);
+  bottom: unset;
+}
 @media (max-width: 991.98px) {
   .select-options {
     min-width: -moz-fit-content;
     min-width: fit-content;
   }
+}
+.select-options li {
+  padding: 0px !important;
 }
 .select-options li:not(:first-child) {
   border-top: 1px solid #F4F6F8;
@@ -9427,4 +9437,196 @@ footer .mobile ul li a.active .text {
   display: block;
   max-width: -moz-fit-content;
   max-width: fit-content;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/***********
+ACCOUNT
+***********/
+.account {
+  position: relative;
+}
+.account-top {
+  margin-bottom: 2em;
+}
+.account-top .box {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 1.25em;
+  padding: 1em;
+}
+.account-top .box .icon {
+  background-color: rgba(0, 119, 255, 0.1);
+  border-radius: 50%;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account-top .box .icon span {
+  color: #fff;
+  font-size: 3.125em;
+  font-weight: 600;
+}
+.account-top .gradient-block {
+  display: block;
+  background: url(imgs/bg/gradient.jpg) no-repeat center;
+  background-size: cover;
+  border-radius: 0.625em;
+  width: 100%;
+  height: 100%;
+}
+.account-nav ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.account-nav ul li:not(:first-child) {
+  margin-top: 1em;
+}
+@media (max-width: 991.98px) {
+  .account-nav ul li:not(:first-child) {
+    margin-top: 0.5em;
+  }
+}
+.account-nav ul li a {
+  color: #637381;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0.75em 1em;
+  border-radius: 1.25em;
+  transition: 300ms ease-in;
+}
+.account-nav ul li a svg {
+  font-size: 1.5em;
+}
+.account-nav ul li a div {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-left: 0.5em;
+  flex: 1;
+}
+.account-nav ul li a .badge {
+  background-color: rgba(0, 119, 255, 0.2);
+  padding: 0.34em;
+  border-radius: 1.25em;
+  color: #1C1C1C;
+}
+.account-nav ul li a:hover, .account-nav ul li a:focus {
+  color: #0077FF;
+}
+.account-nav ul li a:active, .account-nav ul li a.active {
+  background-color: rgba(0, 119, 255, 0.2);
+  color: #0077FF;
+}
+.account .sec-orders {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 1.25em;
+}
+.account .sec-orders ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.account .sec-orders ul li {
+  padding: 1em;
+  border-bottom: 1px solid #F4F6F8;
+}
+.account .order-card {
+  display: grid;
+  grid-template-columns: 70px 149px 120px auto 100px 150px;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "num time status delivery price btn" "num time status address price btn";
+  gap: 0em 1em;
+  font-size: 0.9em;
+}
+.account .order-card.top {
+  padding: 1em;
+  background-color: #F4F6F8;
+  grid-template-rows: 1fr;
+  grid-template-areas: "num time status delivery price btn";
+  color: #637381;
+  font-weight: 600;
+  border-radius: 1.25em 1.25em 0px 0px;
+}
+.account .order-card-num {
+  grid-area: num;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-time {
+  grid-area: time;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-status {
+  grid-area: status;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-delivery {
+  grid-area: delivery;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card address {
+  grid-area: address;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-price {
+  grid-area: price;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-btn {
+  grid-area: btn;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-btn a {
+  color: #0077FF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .order-card-btn a svg {
+  font-size: 1.5em;
+  background-color: rgba(0, 119, 255, 0.1);
+  border-radius: 50%;
+  margin-left: 0.25em;
+  padding: 0.15em;
+}
+
+/***********
+ACCOUNT END
+***********//*# sourceMappingURL=style.css.map */

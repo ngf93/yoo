@@ -1,14 +1,14 @@
-import React, {useState, useRef } from 'react';
+import React, {useState, useRef, useEffect } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { HiChevronDown } from "react-icons/hi2";
+// import useObserver from '../../hooks/useObserver';
 
 const SelectImitation = (props) => {
   const optionsArr = props.optionsArr;
-
   const [options, setOptions] = useState(optionsArr);
   const [showOptions, setShowOptions] = useState(false);
   const ref = useRef();
-  
+  // const [objRef, isVisible] = useObserver({threshold: 1.0});
   const handleChange = (val) => {
     setOptions(options.map(obj => {
       if (obj.value === val) {
@@ -18,8 +18,23 @@ const SelectImitation = (props) => {
       }
    }));
   }
-
   useOnClickOutside(ref, () => setShowOptions(false));
+
+  const objRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const onEntry = (entries) => {
+    const [entry] = entries;
+    setIsVisible(entry.isIntersecting);
+  }
+  useEffect(
+    () => {
+      const observer = new IntersectionObserver(onEntry, options);
+      if(objRef.current) observer.observe(objRef.current)
+      return () => {
+        if(objRef.current) observer.unobserve(objRef.current)
+      }
+    }
+  );
 
   return (
     <div ref={ref} className={'select '+props.boxClass}>
@@ -39,7 +54,7 @@ const SelectImitation = (props) => {
         </div>
         <HiChevronDown className='select-button-chevron'/>
       </button>
-      <ul className={(showOptions) ? "select-options" : "select-options d-none"}>
+      <ul ref={objRef} data-observing={isVisible} className={(showOptions) ? "select-options" : "select-options d-none"}>
         {
           options.map( obj => {
             return <li key={obj.value}>
