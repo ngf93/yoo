@@ -3,7 +3,7 @@ import { HiPlus, HiMinus } from "react-icons/hi";
 
 const CountInput = (props) => {
   return (
-    <div className={(props.dis) ? "countInput disabled" : "countInput"}>
+    <div className={(props.dis) ? "countInput disabled "+props.className : "countInput"+props.className}>
       <button type='button'>
         <HiMinus/>
       </button>

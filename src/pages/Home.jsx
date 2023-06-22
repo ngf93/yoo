@@ -4,14 +4,15 @@ import {Link} from 'react-router-dom';
 import StoriesSection from '../components/StoriesSection';
 import ProductCardMini from '../components/ProductCardMini';
 import Offer from '../components/Offer';
+import Section3 from '../components/Section3';
 import AppStore from '../assets/imgs/appstore-black.svg';
 import GooglePlay from '../assets/imgs/googleplay-black.svg';
 import Phone from '../assets/imgs/phone.png';
 import { HiOutlineArrowRightCircle, HiOutlineArrowLeftCircle } from "react-icons/hi2";
+
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import Section3 from '../components/Section3';
 
 const Home = () => {
   return (
