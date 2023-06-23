@@ -1,12 +1,13 @@
-import React from 'react';
-import { IoCaretDownOutline } from "react-icons/io5";
+import React, {useState} from 'react';
 import CountInput from './utils/CountInput';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import useIsMobile from '../hooks/isMobile';
+import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi2";
 
 const OrderItem = () => {
   const isMobileXXL = useIsMobile('1399px');
+  const [showExtra, setShowExtra] = useState(false);
 
   return (
     <div className='order-item'>
@@ -23,13 +24,22 @@ const OrderItem = () => {
         >
           <p className='consist'>Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус</p>
         </OverlayTrigger>
-        <p className='dark-gray mb-2'>36 см</p>
+      </div>
+      <ul className="info">
+        <li>36 см</li>
+        <li>36 см</li>
+      </ul>
+      <div className="show" onClick={()=>setShowExtra(!showExtra)}>
         <button type='button' className='d-flex align-items-center'>
           <span>Показать ещё</span>
-          <IoCaretDownOutline className='fs-08 ms-2'/>
+          {
+            (showExtra)
+            ? <HiOutlineChevronUp className='ms-2'/>
+            : <HiOutlineChevronDown className='ms-2'/>
+          }
         </button>
       </div>
-      <div className='count'>
+      <div className='quantity'>
         {
           (isMobileXXL)
           ? <div className="input w-50p py-1 px-2 rounded-4 text-center">x2</div>
@@ -39,7 +49,15 @@ const OrderItem = () => {
           </>
         }
       </div>
-      <div className='price'>640 ₽</div>
+      <div className='price'>640&nbsp;₽</div>
+      {
+        (showExtra) &&
+        <div className="extra">
+          <p>+ Творожный сыр х2</p>
+          <p>- Сыр Блю-Чиз</p>
+        </div>
+      }
+      
     </div>
   );
 };

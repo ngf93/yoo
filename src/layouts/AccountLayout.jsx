@@ -5,26 +5,28 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AccountMenu from '../pages/account/AccountMenu';
 import {Link} from 'react-router-dom';
+import NavBreadcrumbs from '../components/utils/NavBreadcrumbs';
 
 const AccountLayout = ({isMobile}) => {
   return (
     <main className='account mb-2 mb-sm-3 mb-md-4 mb-xl-5'>
       <Container className='pt-4 pt-lg-0'>
-        <h1 className='d-none d-lg-block'>Личный кабинет</h1>
+        <h1 className='d-none d-lg-block mb-2'>Личный кабинет</h1>
+        <NavBreadcrumbs/>
         {
           (isMobile)
           ? <Outlet/>
           : <div>
             <Row className="account-top gx-3 gx-xl-4">
               <Col lg={3}>
-                <div className="box w-100 d-flex align-items-center">
+                <div className="box w-100 h-100 d-flex align-items-center">
                   <div className="icon">
                     <span>A</span>
                   </div>
                   <div>
                     <h6>Алексей</h6>
                     <p className='mb-2'><a href="tel:+79198563658">+7 919 856-36-58</a></p>
-                    <Link to='/account/edit' className='main-color'>Изменить</Link>
+                    <Link to='/account/settings' className='main-color'>Изменить</Link>
                   </div>
                 </div>
               </Col>
@@ -37,7 +39,7 @@ const AccountLayout = ({isMobile}) => {
                 </div>
               </Col>
               <Col lg={7}>
-                <div className='h-100 w-100 row row-cols-2 gx-3 gx-xl-4'>
+                <div className='h-100 row row-cols-2 gx-3 gx-xl-4'>
                   <div>
                     <div className="gradient-block"></div>
                   </div>

@@ -152,7 +152,7 @@ const Header = () => {
                         <p>08:00 — 00:00</p>
                       </li>
                     </ul>
-                    <button type='button' className='btn-5 rounded w-100'>Посмотреть на карте</button>
+                    <button type='button' className='btn-green rounded w-100'>Посмотреть на карте</button>
                   </div>
                 </div>
 

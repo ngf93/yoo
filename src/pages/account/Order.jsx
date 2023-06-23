@@ -17,7 +17,7 @@ const Order = () => {
       </div>
 
       <Row>
-        <Col lg={8}>
+        <Col lg={8} className='mb-4 mb-lg-0'>
           <ul className='order-list'>
             <li><OrderItem/></li>
             <li><OrderItem/></li>
@@ -31,7 +31,7 @@ const Order = () => {
                 <span>Время заказа</span>
                 <span className='ms-3'>10:00 12&nbsp;Авг&nbsp;2023</span>
               </p>
-              <div className='btn-5 fs-09 rounded-3 mb-3'>Готовится</div>
+              <div className='btn-green fs-09 rounded-3 mb-3'>Готовится</div>
               <div className='order-card-delivery'>Самовывоз <span className='dark-gray ms-1'>•</span></div>
               <address className='d-block fs-09 dark-gray'>Филиал — ул. Фучика 89, д 1</address>
 
@@ -53,10 +53,10 @@ const Order = () => {
                 <p>1 880 ₽</p>
               </div>
             </div>
-            <div className='btn-5 rounded-0 w-100 justify-content-start'>Списано 33 бонуса</div>
+            <div className='btn-green rounded-0 w-100 justify-content-start'>Списано 33 бонуса</div>
             <div className="p-2 p-xl-3">
               <p className="fs-09 main-color">34 бонуса будут начислены за этот заказ</p>
-              <button type='submit' disabled className='btn-11 w-100 mt-3'>Отменить заказ</button>
+              <button type='submit' disabled className='btn-red w-100 mt-3'>Отменить заказ</button>
             </div>
           </div>
         </Col>

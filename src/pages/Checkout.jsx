@@ -29,7 +29,7 @@ const Checkout = () => {
                   </div>
                   
                   <div className="d-flex align-items-center justify-content-between">
-                    <div className='btn-5 w-auto fw-6 rounded-3'>Доступно 344 бонуса</div>
+                    <div className='btn-green w-auto fw-6 rounded-3'>Доступно 344 бонуса</div>
                     <label>
                       <span className='me-1 me-sm-3'>Списать</span>
                       <input type="checkbox" role="switch" />

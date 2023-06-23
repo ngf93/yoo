@@ -49,7 +49,7 @@ const AccountMenu = (props) => {
           <li>
             <NavLink to="offers">
               <HiOutlineBolt/>
-              <div>Акции</div>
+              <div>Акции и промокоды</div>
             </NavLink>
           </li>
           <li>
@@ -66,7 +66,7 @@ const AccountMenu = (props) => {
           </li>
         </ul>
       </nav>
-      <Link to="help" className='btn-11 fs-12 w-100 rounded-3'>
+      <Link to="help" className='btn-orange fs-12 w-100 rounded-3'>
         <HiOutlineLifebuoy className='fs-15 me-2'/>
         <div>Тех. подержка</div>
       </Link>

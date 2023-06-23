@@ -26,12 +26,12 @@ $red: #E01E00;
 $orange: #FF9D17;
 $green: #00AB55;
 $yellow: #FEF8BE;
-$black: #1C1C1C;
+$black: #212B36;
 $dark: #373737;
 $dark-gray: #637381;
 $gray: #C2C2C2;
 $light-gray: #F4F6F8;
-$white: #fff;
+$white: $white;
 $transition: 300ms ease-in;
 
 /* mixins */
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
 .w {
   &-xs-100 {
     @include media-breakpoint-down(sm) {
-      width: 100%;
+      width: 100% !important;
     }
   }
   &-fit {
@@ -491,7 +491,7 @@ button {
 }
 .btn {
   @include flex(row, center, center, nowrap);
-  padding: .6em 1.2em;
+  padding: .7em 1.2em;
   text-align: center;
   transition: $transition;
   width: fit-content;
@@ -499,11 +499,13 @@ button {
   /* голубая кнопка */
   &-1 {
     @extend .btn;
-    color: #fff;
+    color: $white;
     background-color: $main-color;
+    border: 1px solid $main-color;
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: darken($color: $main-color, $amount: 10%);
+      border: 1px solid darken($color: $main-color, $amount: 10%);
     }
   }
   /* кнопка c голубой обводкой */
@@ -520,10 +522,10 @@ button {
   /* красная кнопка */
   &-2 {
     @extend .btn;
-    color: #fff;
+    color: $white;
     background-color: $red;
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: darken($color: $red, $amount: 5%);
     }
   }
@@ -534,7 +536,7 @@ button {
     background-color: #202020;
     font-weight: 600;
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: $main-color;
     }
   }
@@ -546,7 +548,7 @@ button {
     border: 1px solid $black;
     font-weight: 600;
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: $black;
     }
   }
@@ -554,20 +556,34 @@ button {
   &-4 {
     @extend .btn;
     color: $black;
-    background-color: rgba($color: #fff, $alpha: .87);
+    background-color: rgba($color: $white, $alpha: .87);
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: $main-color;
     }
   }
-  /* зеленая кнопка */
-  &-5 {
+  /* светло-зеленая кнопка */
+  &-green {
     @extend .btn;
     color: $green;
+    border: 1px solid transparent;
     background-color: rgba($color: $green, $alpha: 0.1);
     &:hover, &:focus, &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: $green;
+      border: 1px solid $green;
+    }
+  }
+  /* зеленая кнопка */
+  &-deepgreen {
+    @extend .btn;
+    color: $white;
+    background-color: $green;
+    border: 1px solid $green;
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
+      background-color: darken($color: $green, $amount: 10%);
+      border: 1px solid darken($color: $green, $amount: 10%);
     }
   }
   /* прозрачно-голубая кнопка */
@@ -635,7 +651,7 @@ button {
       @include shadow();
     }
     &:active, &.active {
-      color: #fff;
+      color: $white;
       background-color: $main-color;
       border: 1px solid $main-color;
     }
@@ -653,7 +669,7 @@ button {
     }
   }
   /* orange */
-  &-11 {
+  &-orange {
     @extend .btn;
     color: $orange;
     background-color: rgba($color: $orange, $alpha: 0.1);
@@ -664,8 +680,21 @@ button {
       border: 1px solid $orange;
     }
   }
+  /* red */
+  &-red {
+    @extend .btn;
+    color: $red;
+    background-color: rgba($color: $red, $alpha: 0.1);
+    border: 1px solid transparent;
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
+      background-color: $red;
+      border: 1px solid $red;
+    }
+  }
   &[disabled]{
     background-color: $light-gray;
+    border: 1px solid $light-gray;
     color: $dark-gray;
     cursor: pointer;
     pointer-events: none;
@@ -828,10 +857,10 @@ select {
     @include flex();
     transition: $transition;
     cursor: pointer;
-    color: #fff;
+    color: $white;
     svg {
       stroke-width: 1px;
-      fill: rgba($color: #fff, $alpha: 0.5);
+      fill: rgba($color: $white, $alpha: 0.5);
     }
     &:hover {
       transform: scale(120%);
@@ -976,6 +1005,28 @@ select {
               background-image: linear-gradient(90deg, $main-color 40%, lighten($main-color, 40%) 100%);
             }
           }
+        }
+      }
+    }
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 2em;
+  ul {
+    @include list();
+    @include flex(row, flex-start, center, wrap);
+    font-size: .9em;
+    li {
+      color: $gray;
+      &:not(:last-child){
+        color: $black;
+        margin-right: 1em;
+        &::after {
+          content: '●';
+          color: $gray;
+          margin-left: 1em;
+          font-size: .75em;
         }
       }
     }
@@ -2635,54 +2686,207 @@ ACCOUNT
   }
   .order-list {
     @include list();
-    li {
+    &>li {
       border-bottom: 1px solid $light-gray;
       padding: 1.25em 0.5em;
       margin-bottom: 0.5em;
     }
   }
   .order-item {
-    @include flex(row, flex-start, flex-start, nowrap);
+    --w: 100px;
+    display: grid;
+    grid-template-columns: var(--w) auto 110px 50px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "img data quantity price"
+    "img info quantity price"
+    "img show . ."
+    ". extra . .";
+    gap: 0.5em 1em;
+    @include media-breakpoint-down(xxl) {
+      grid-template-columns: var(--w) auto 50px 50px;
+      gap: 0.5em 0.75em;
+    }
+    @include media-breakpoint-down(xl) {
+      --w: 80px;
+    }
+    @include media-breakpoint-down(lg) {
+      gap: 1em 1.5em;
+    }
+    @include media-breakpoint-down(md) {
+      gap: .5em 1em;
+    }
+    @include media-breakpoint-down(sm) {
+      --w: 60px;
+      gap: 0.25em 0.5em;
+      grid-template-areas: 
+      "img data data data"
+      "img info price quantity"
+      "img show show show"
+      "extra extra extra extra";
+    }
     img {
-      --w: 100px;
       @include roundedImg($w:var(--w), $rad: $radius*0.5, $fit:contain);
-      order: 1;
-      margin-right: 1em;
-      @include media-breakpoint-down(xl) {
-        --w: 80px;
-      }
+      grid-area: img;
     }
     .text {
-      flex: 1;
-      order: 2;
+      grid-area: data;
       .consist {
         color: $dark-gray;
-        margin-bottom: .75em;
         @include clamp(2, 1.2em, true);
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
       }
     }
-    .count {
-      order: 3;
-      margin-left: 1em;
-      @include media-breakpoint-down(xxl) {
-        order: 4;
-        margin-left: .5em;
+    .info {
+      grid-area: info;
+      color: $dark-gray;
+      @include flex(row, flex-start, center, nowrap);
+      @include list();
+      li {
+        &:not(:first-child){
+          margin-left: 1em;
+        }
       }
-      @include media-breakpoint-down(lg) {
-        margin-left: 1.5em;
+    }
+    .show {
+      grid-area: show;
+      @include media-breakpoint-down(md) {
+        color: $main-color;
+        font-weight: 300;
       }
+    }
+    .extra {
+      grid-area: extra;
+      color: $dark-gray;
+    }
+    .quantity {
+      grid-area: quantity;
     }
     .price {
-      order: 4;
+      grid-area: price;
       font-size: 1.2em;
       font-weight: 600;
-      margin-left: 1em;
-      @include media-breakpoint-down(xxl) {
-        order: 3;
-        margin-left: .5em;
+      @include media-breakpoint-down(sm) {
+        @include flex();
+        font-size: 1em;
+        font-weight: 400;
       }
-      @include media-breakpoint-down(lg) {
-        margin-left: 1.5em;
+    }
+  }
+  .addresses {
+    &-list {
+      @include list();
+      border-radius: $radius;
+      @include shadow();
+      padding: 0.5em 0em;
+      li {
+        padding: 1em 1.25em;
+        @include flex(row, space-between, center, nowrap);
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          align-items: stretch;
+          padding: .5em 1em;
+        }
+        &:not(:first-child){
+          border-top: 1px solid $light-gray;
+        }
+      }
+    }
+  }
+  .bonus-program {
+    @include media-breakpoint-up(lg) {
+      .link-return {
+        display: none;
+      }
+    }
+    ul {
+      @include list();
+      padding: .75em 0em 0.5em;
+      li {
+        border-bottom: 1px solid $light-gray;
+        padding: .75em 1.25em;
+        display: grid;
+        grid-template-columns: 30fr 20fr 50fr;
+        grid-template-rows: auto;
+        grid-template-areas: 'title date bonuses';
+        gap: 1em;
+        @include media-breakpoint-down(xxl) {
+          grid-template-columns: 40fr 20fr 40fr;
+        }
+        @include media-breakpoint-down(md) {
+          grid-template-columns: 1fr 2fr;
+          grid-template-areas: 
+          'bonuses title'
+          'bonuses date';
+          gap: .5em;
+        }
+        @include media-breakpoint-down(sm) {
+          grid-template-columns: 1fr 1fr;
+        }
+        .title {
+          grid-area: title;
+          @include flex(row, flex-start, center, nowrap);
+          @include media-breakpoint-down(sm) {
+            text-align: right;
+            justify-content: flex-end;
+          }
+        }
+        .date {
+          grid-area: date;
+          color: $dark-gray;
+          @include flex(row, flex-start, center, nowrap);
+          @include media-breakpoint-down(sm) {
+            text-align: right;
+            justify-content: flex-end;
+          }
+        }
+        .bonuses {
+          grid-area: bonuses;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+          gap: 1em;
+          grid-template-areas: 'income spending';
+          @include media-breakpoint-down(md) {
+            display: flex;
+            flex-direction: row;
+            gap: .5em;
+          }
+        }
+        .income {
+          grid-area: income;
+          width: 100%;
+          text-align: center;
+          @include flex();
+          background-color: rgba($color: $green, $alpha: 0.1);
+          color: $green;
+          font-weight: 600;
+          padding: .7em;
+          border-radius: $radius*0.5;
+          @include media-breakpoint-down(md) {
+            width: 3.6em;
+            height: 3.6em;
+            border-radius: 50%;
+          }
+        }
+        .spending {
+          grid-area: spending;
+          width: 100%;
+          text-align: center;
+          @include flex();
+          background-color: rgba($color: $main-color, $alpha: 0.1);
+          color: $main-color;
+          font-weight: 600;
+          padding: .7em;
+          border-radius: $radius*0.5;
+          @include media-breakpoint-down(md) {
+            width: 3.6em;
+            height: 3.6em;
+            border-radius: 50%;
+          }
+        }
       }
     }
   }
