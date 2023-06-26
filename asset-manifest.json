@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/yoo/static/css/main.08e9a63a.css",
-    "main.js": "/yoo/static/js/main.c9f8ada7.js",
+    "main.css": "/yoo/static/css/main.8c69c0fc.css",
+    "main.js": "/yoo/static/js/main.3164222f.js",
     "static/media/phone.png": "/yoo/static/media/phone.c241d7b248fc5ad46338.png",
     "static/media/lightning.png": "/yoo/static/media/lightning.691e1175a36eaf9fbfa8.png",
     "static/media/choose.svg": "/yoo/static/media/choose.c9c1df8457eb9387a030f1df6468d844.svg",
@@ -15,13 +15,14 @@
     "static/media/logo-text-white.svg": "/yoo/static/media/logo-text-white.b33a28519762c81f49928deb5ab056b5.svg",
     "index.html": "/yoo/index.html",
     "static/media/curve.svg": "/yoo/static/media/curve.7dcc5f42b7d9ef4dbb44.svg",
+    "static/media/chevron.svg": "/yoo/static/media/chevron.c5c580271e442a1ba696.svg",
     "static/media/trapezoid.svg": "/yoo/static/media/trapezoid.cad6f25a61f117eb0de8.svg",
     "static/media/mark.svg": "/yoo/static/media/mark.0b3031d05d6780bc0ac3.svg",
-    "main.08e9a63a.css.map": "/yoo/static/css/main.08e9a63a.css.map",
-    "main.c9f8ada7.js.map": "/yoo/static/js/main.c9f8ada7.js.map"
+    "main.8c69c0fc.css.map": "/yoo/static/css/main.8c69c0fc.css.map",
+    "main.3164222f.js.map": "/yoo/static/js/main.3164222f.js.map"
   },
   "entrypoints": [
-    "static/css/main.08e9a63a.css",
-    "static/js/main.c9f8ada7.js"
+    "static/css/main.8c69c0fc.css",
+    "static/js/main.3164222f.js"
   ]
 }
