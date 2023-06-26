@@ -31,7 +31,7 @@ const AccountMenu = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="help">
+          <NavLink to="support">
             <HiOutlineLifebuoy/>
             <div>Тех. подержка</div>
           </NavLink>

@@ -2,10 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Link} from 'react-router-dom';
 import useIsMobile from '../../hooks/isMobile'
 import NavBreadcrumbs from '../../components/utils/NavBreadcrumbs';
-import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
+import AccountTitleReturn from '../../components/AccountTitleReturn';
 
 const Settings = () => {
   const isMobileLG = useIsMobile('991px');
@@ -16,13 +15,7 @@ const Settings = () => {
       <Container className='pt-4 pt-lg-0'>
         {
           (isMobileLG)
-          ? <div className="d-flex align-items-center mb-4">
-            <Link to="/account/settings" className='link-return'>
-              <HiOutlineArrowLeftCircle/>
-              <span>Назад</span>
-            </Link>
-            <h6 className='fs-12 mb-0'>Внесите изменения</h6>
-          </div>
+          ? <AccountTitleReturn link={'/account'} title={'Внесите изменения'} />
           : <>
             <h1 className='mb-2'>Личный кабинет</h1>
             <NavBreadcrumbs/>  

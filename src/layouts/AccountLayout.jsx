@@ -11,12 +11,12 @@ const AccountLayout = ({isMobile}) => {
   return (
     <main className='account mb-2 mb-sm-3 mb-md-4 mb-xl-5'>
       <Container className='pt-4 pt-lg-0'>
-        <h1 className='d-none d-lg-block mb-2'>Личный кабинет</h1>
-        <NavBreadcrumbs/>
         {
           (isMobile)
           ? <Outlet/>
           : <div>
+            <h1 className='mb-2'>Личный кабинет</h1>
+            <NavBreadcrumbs/>
             <Row className="account-top gx-3 gx-xl-4">
               <Col lg={3}>
                 <div className="box w-100 h-100 d-flex align-items-center">

@@ -4,7 +4,7 @@ import { HiOutlineArrowLeftCircle } from "react-icons/hi2";
 
 const AccountTitleReturn = (props) => {
   return (
-    <div className="d-flex align-items-center flex-wrap mb-4">
+    <div className={"d-flex align-items-center flex-wrap mb-4 "+props.className}>
       <Link to={props.link} className='link-return'>
         <HiOutlineArrowLeftCircle/>
         <span>Назад</span>

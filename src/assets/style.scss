@@ -2890,6 +2890,194 @@ ACCOUNT
       }
     }
   }
+  .notifications {
+    .link-return {
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+    }
+    &-list {
+      @include list();
+      background-color: $white;
+      @include shadow();
+      overflow: hidden;
+      @include safariFix();
+      border-radius: $radius;
+      padding: 0.5em 0em;
+      @include media-breakpoint-down(md) {
+        padding: 0em;
+      }
+      li {
+        --icon: 60px;
+        --w: 130px;
+        display: grid;
+        grid-template-columns: var(--icon) auto var(--w) var(--w);
+        grid-template-rows: auto;
+        gap: 1em;
+        grid-template-areas: "icon info links date";
+        padding: 1em 2em;
+        @include media-breakpoint-down(xl) {
+          --w: 115px;
+          padding: 1em;
+        }
+        @include media-breakpoint-down(md) {
+          grid-template-columns: var(--icon) 2fr 3fr;
+          grid-template-areas: 
+          "icon info info"
+          ". links date";
+        }
+        @include media-breakpoint-down(sm) {
+          --icon: 50px;
+        }
+        &:not(:last-child){
+          border-bottom: 1px solid $light-gray;
+        }
+        .icon {
+          grid-area: icon;
+          width: var(--icon);
+          height: var(--icon);
+          border-radius: 50%;
+          background-color: $main-color;
+        }
+        .info {
+          position: relative;
+          grid-area: info;
+          h6 {width: fit-content;}
+          .NB {
+            float: right;
+            color: $green;
+            background-color: rgba($color: $green, $alpha: 0.1);
+            font-size: .75em;
+            border-radius: 1.25em;
+            padding: 0.3em 1em;
+            margin-left: 1em;
+            @include media-breakpoint-down(md) {
+              float: unset;
+              font-size: 1.75em;
+              position: absolute;
+              top: -.15em;
+              right: -.25em;
+              z-index: 10;
+              padding: 2px;
+            }
+          }
+          p {
+            color: $dark-gray;
+            @include media-breakpoint-down(sm) {
+              font-size: .9em;
+            }
+          }
+        }
+        .links {
+          grid-area: links;
+          @include flex();
+          @include media-breakpoint-down(md) {
+            justify-content: flex-start;
+          }
+        }
+        .date {
+          grid-area: date;
+          color: $dark-gray;
+          text-align: right;
+          @include flex(row, flex-end, center, nowrap);
+          @include media-breakpoint-down(sm) {
+            font-size: .9em;
+          }
+        }
+      }
+    }
+  }
+  .bankcard {
+    background-color: $white;
+    border-radius: $radius*0.5;
+    @include shadow();
+    padding: $radius*0.5 $radius*0.75;
+    height: 150px;
+    @include flex(column, space-between, stretch, nowrap);
+    @include media-breakpoint-down(xxl) {
+      height: 175px;
+    }
+    @include media-breakpoint-down(xl) {
+      height: 150px;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 33vw;
+    }
+    &-logo {
+      max-height: 3em;
+      max-width: 9em;
+      object-fit: scale-down;
+      object-position: left center;
+      @include media-breakpoint-down(xxl) {
+        max-height: 4em;
+        max-width: 10em;
+      }
+      @include media-breakpoint-down(sm) {
+        max-width: 75%;
+      }
+    }
+    &-type {
+      width: 2.5em;
+      height: 1.4em;
+      object-fit: scale-down;
+      object-position: left center;
+      @include media-breakpoint-down(xxl) {
+        width: 3em;
+        height: 1.5em;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 2.75em;
+      }
+    }
+    &-num {
+      font-size: .95em;
+      @include media-breakpoint-down(xxl) {
+        font-size: 1em;
+      }
+      @include media-breakpoint-down(lg) {
+        font-size: 1.1em;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 1em;
+      }
+    }
+    button {
+      font-size: 1.25em;
+      color: $dark-gray;
+    }
+  }
+  .support {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: 72px auto 100px;
+    grid-template-areas: 
+    "top top"
+    "chat choose"
+    "form choose";
+    background-color: $white;
+    border-radius: $radius;
+    @include shadow();
+    .top {
+      grid-area: top;
+      padding: 1em;
+      border-bottom: 1px solid $light-gray;
+      @include flex(row, flex-start, center, nowrap);
+      .link-return {
+        @include media-breakpoint-up(lg) {
+          display: none;
+        }
+      }
+    }
+    .chat {
+      grid-area: chat;
+    }
+    .choose {
+      grid-area: choose;
+    }
+    .form {
+      grid-area: form;
+    }
+  }
 }
 
 /***********
