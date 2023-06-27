@@ -95,7 +95,7 @@ const Header = () => {
                 (!isMobileLG)
                 ? <>
                   <li>
-                    <Link to="/account">
+                    <Link to="/login">
                       <HiOutlineUserCircle/>
                     </Link>
                   </li>

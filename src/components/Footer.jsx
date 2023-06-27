@@ -49,7 +49,7 @@ const Footer = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/profile'>
+                <NavLink to='/login'>
                   <UserIcon/>
                   <div className="text"><span>Аккаунт</span></div>
                 </NavLink>

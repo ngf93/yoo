@@ -245,6 +245,7 @@ h6 {
   &-8 {font-weight: 800;}
   &-9 {font-weight: 900;}
 }
+.white {color: $white;}
 .black {color: $black;}
 .dark-gray {color: $dark-gray;}
 .gray {color: $gray;}
@@ -562,6 +563,18 @@ button {
       background-color: $main-color;
     }
   }
+  /* кнопка c белой обводкой */
+  &-40 {
+    @extend .btn;
+    color: $white;
+    background-color: transparent;
+    border: 1px solid $white;
+    &:hover, &:focus, &:active, &.active {
+      color: $white;
+      background-color: rgba($color: $white, $alpha: 0.1);
+      border: 1px solid $white;
+    }
+  }
   /* светло-зеленая кнопка */
   &-green {
     @extend .btn;
@@ -795,13 +808,17 @@ select {
     @include media-breakpoint-down(lg) {
       min-width: fit-content;
     }
-    li {
+    &>li {
+      display: block;
+      width: 100%;
       padding: 0px !important;
+      margin: 0px !important;
       &:not(:first-child){
         border-top: 1px solid $light-gray;
       }
     }
     label {
+      width: 100%;
       cursor: pointer;
       background-color: $white;
       transition: $transition;
@@ -3057,29 +3074,180 @@ ACCOUNT
     background-color: $white;
     border-radius: $radius;
     @include shadow();
-    .top {
+    &-top {
       grid-area: top;
-      padding: 1em;
+      padding: 1em 1.5em;
       border-bottom: 1px solid $light-gray;
       @include flex(row, flex-start, center, nowrap);
-      .link-return {
-        @include media-breakpoint-up(lg) {
-          display: none;
+      &-icon {
+        position: relative;
+        img {
+          @include roundedImg(40px, 50%, cover);
+          position: relative;
+          z-index: 1;
+        }
+        .indicator {
+          position: absolute;
+          bottom: -2px;
+          right: -2px;
+          z-index: 10;
+          width: $radius*0.5;
+          height: $radius*0.5;
+          border-radius: 50%;
+          border: 2px solid $white;
+          background-color: $gray;
+          box-sizing: content-box;
+          transition: $transition;
+          &.active {
+            background-color: $main-color;
+          }
+        }
+      }
+      h5 {font-weight: 600;} 
+    }
+    &-chat {
+      grid-area: chat;
+    }
+    &-choose {
+      grid-area: choose;
+      border-left: 1px solid $light-gray;
+      padding: 1.25em;
+      .select-button {
+        border-color: $gray;
+      }
+      ul {
+        @include list();
+        li {
+          @include flex(row, space-between, stretch, nowrap);
+          font-size: .9em;
+          &:not(:first-child){
+            margin-top: 1.5em;
+          }
+          .text {
+            color: $dark-gray;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid $white;
+            background-color: $gray;
+            box-sizing: content-box;
+            transition: $transition;
+            &.active {
+              background-color: $main-color;
+            }
+          }
         }
       }
     }
-    .chat {
-      grid-area: chat;
-    }
-    .choose {
-      grid-area: choose;
-    }
-    .form {
+    &-form {
       grid-area: form;
+      border-top: 1px solid $light-gray;
+      padding: .5em 1em;
+      @include flex(row, flex-start, center, nowrap);
+      input {
+        border-color: transparent;
+        box-shadow: none;
+      }
     }
   }
 }
-
+.chat {
+  min-height: 300px;
+  max-height: 550px;
+  overflow: auto;
+  padding: 1.5em;
+  &-message {
+    margin: 1em 0px;
+    time {
+      display: block;
+      color: $gray;
+      text-align: right;
+      font-size: .9em;
+    }
+    &.mine {
+      .bubble {
+        width: 85%;
+        margin-left: auto;
+        margin-top: .5em;
+        padding: 1em;
+        border-radius: $radius*0.5 $radius*0.5 0px $radius*0.5;
+        background-color: rgba($color: $main-color, $alpha: 0.1);
+      }
+    } 
+    &.manager {
+      width: 85%;
+      .bubble {
+        padding: 1em;
+        border-radius: 0px $radius $radius $radius;
+        background-color: $light-gray;
+      }
+    } 
+   
+  }
+}
+.login {
+  position: relative;
+  min-height: calc(100vh - var(--h-height) - var(--f-height));
+  &-forms {
+    position: relative;
+    z-index: 1;
+    width: 62%;
+    background-color: $white;
+    padding: 4em;
+    @include media-breakpoint-down(lg) {
+      padding: 2em 0em;
+      width: 100%;
+    }
+    form {
+      background-color: $white;
+      border-radius: $radius;
+      @include shadow();
+      padding: 2em;
+      &.login-form {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+  }
+  &-toggler {
+    position: absolute;
+    top: 0px;
+    right: 0%;
+    bottom: 0px;
+    z-index: 10;
+    width: 38%;
+    background-color: $main-color;
+    background-image: url(imgs/bg/fruits.png), url(imgs/bg/entrance.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%, 100% 50%;
+    color: $white;
+    text-align: center;
+    padding-top: 4em;
+    .btn-40 {
+      width: 40%;
+    }
+    .text {
+      position: relative;
+      overflow: hidden;
+      &-1 {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        margin-left: 0%;
+      }
+      &-2 {
+        @include absBG(10, 0px, 100%);
+        left: -100%;
+      }
+    }
+  }
+}
 /***********
 ACCOUNT END
 ***********/

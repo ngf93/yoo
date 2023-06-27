@@ -6825,6 +6825,10 @@ h6, .h6 {
   font-weight: 900;
 }
 
+.white {
+  color: #fff;
+}
+
 .black {
   color: #212B36;
 }
@@ -7143,7 +7147,7 @@ button {
   color: inherit;
 }
 
-.btn, .btn-red, .btn-orange, .btn-99, .btn-90, .btn-9, .btn-8, .btn-7, .btn-6, .btn-deepgreen, .btn-green, .btn-4, .btn-30, .btn-3, .btn-2, .btn-10, .btn-1 {
+.btn, .btn-red, .btn-orange, .btn-99, .btn-90, .btn-9, .btn-8, .btn-7, .btn-6, .btn-deepgreen, .btn-green, .btn-40, .btn-4, .btn-30, .btn-3, .btn-2, .btn-10, .btn-1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7161,6 +7165,7 @@ button {
   /* черная кнопка */
   /* кнопка c черной обводкой */
   /* белая кнопка */
+  /* кнопка c белой обводкой */
   /* светло-зеленая кнопка */
   /* зеленая кнопка */
   /* прозрачно-голубая кнопка */
@@ -7225,6 +7230,16 @@ button {
 .btn-4:hover, .btn-4:focus, .btn-4:active, .btn-4.active {
   color: #fff;
   background-color: #0077FF;
+}
+.btn-40 {
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+.btn-40:hover, .btn-40:focus, .btn-40:active, .btn-40.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
 }
 .btn-green {
   color: #00AB55;
@@ -7340,7 +7355,7 @@ button {
   background-color: #E01E00;
   border: 1px solid #E01E00;
 }
-.btn[disabled], [disabled].btn-1, [disabled].btn-10, [disabled].btn-2, [disabled].btn-3, [disabled].btn-30, [disabled].btn-4, [disabled].btn-green, [disabled].btn-deepgreen, [disabled].btn-6, [disabled].btn-7, [disabled].btn-8, [disabled].btn-9, [disabled].btn-90, [disabled].btn-99, [disabled].btn-orange, [disabled].btn-red {
+.btn[disabled], [disabled].btn-1, [disabled].btn-10, [disabled].btn-2, [disabled].btn-3, [disabled].btn-30, [disabled].btn-4, [disabled].btn-40, [disabled].btn-green, [disabled].btn-deepgreen, [disabled].btn-6, [disabled].btn-7, [disabled].btn-8, [disabled].btn-9, [disabled].btn-90, [disabled].btn-99, [disabled].btn-orange, [disabled].btn-red {
   background-color: #F4F6F8;
   border: 1px solid #F4F6F8;
   color: #637381;
@@ -7478,13 +7493,17 @@ select {
     min-width: fit-content;
   }
 }
-.select-options li {
+.select-options > li {
+  display: block;
+  width: 100%;
   padding: 0px !important;
+  margin: 0px !important;
 }
-.select-options li:not(:first-child) {
+.select-options > li:not(:first-child) {
   border-top: 1px solid #F4F6F8;
 }
 .select-options label {
+  width: 100%;
   cursor: pointer;
   background-color: #fff;
   transition: 300ms ease-in;
@@ -10395,9 +10414,9 @@ ACCOUNT
   border-radius: 1.25em;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
 }
-.account .support .top {
+.account .support-top {
   grid-area: top;
-  padding: 1em;
+  padding: 1em 1.5em;
   border-bottom: 1px solid #F4F6F8;
   display: flex;
   flex-direction: row;
@@ -10405,19 +10424,192 @@ ACCOUNT
   align-items: center;
   flex-wrap: nowrap;
 }
-@media (min-width: 992px) {
-  .account .support .top .link-return {
-    display: none;
-  }
+.account .support-top-icon {
+  position: relative;
 }
-.account .support .chat {
+.account .support-top-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+.account .support-top-icon .indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  z-index: 10;
+  width: 0.625em;
+  height: 0.625em;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #C2C2C2;
+  box-sizing: content-box;
+  transition: 300ms ease-in;
+}
+.account .support-top-icon .indicator.active {
+  background-color: #0077FF;
+}
+.account .support-top h5, .account .support-top .h5 {
+  font-weight: 600;
+}
+.account .support-chat {
   grid-area: chat;
 }
-.account .support .choose {
+.account .support-choose {
   grid-area: choose;
+  border-left: 1px solid #F4F6F8;
+  padding: 1.25em;
 }
-.account .support .form {
+.account .support-choose .select-button {
+  border-color: #C2C2C2;
+}
+.account .support-choose ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.account .support-choose ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  font-size: 0.9em;
+}
+.account .support-choose ul li:not(:first-child) {
+  margin-top: 1.5em;
+}
+.account .support-choose ul li .text {
+  color: #637381;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.account .support-choose ul li .indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #C2C2C2;
+  box-sizing: content-box;
+  transition: 300ms ease-in;
+}
+.account .support-choose ul li .indicator.active {
+  background-color: #0077FF;
+}
+.account .support-form {
   grid-area: form;
+  border-top: 1px solid #F4F6F8;
+  padding: 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.account .support-form input {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.chat {
+  min-height: 300px;
+  max-height: 550px;
+  overflow: auto;
+  padding: 1.5em;
+}
+.chat-message {
+  margin: 1em 0px;
+}
+.chat-message time {
+  display: block;
+  color: #C2C2C2;
+  text-align: right;
+  font-size: 0.9em;
+}
+.chat-message.mine .bubble {
+  width: 85%;
+  margin-left: auto;
+  margin-top: 0.5em;
+  padding: 1em;
+  border-radius: 0.625em 0.625em 0px 0.625em;
+  background-color: rgba(0, 119, 255, 0.1);
+}
+.chat-message.manager {
+  width: 85%;
+}
+.chat-message.manager .bubble {
+  padding: 1em;
+  border-radius: 0px 1.25em 1.25em 1.25em;
+  background-color: #F4F6F8;
+}
+
+.login {
+  position: relative;
+  min-height: calc(100vh - var(--h-height) - var(--f-height));
+}
+.login-forms {
+  position: relative;
+  z-index: 1;
+  width: 62%;
+  background-color: #fff;
+  padding: 4em;
+}
+@media (max-width: 991.98px) {
+  .login-forms {
+    padding: 2em 0em;
+    width: 100%;
+  }
+}
+.login-forms form {
+  background-color: #fff;
+  border-radius: 1.25em;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 2em;
+}
+.login-forms form.login-form {
+  width: 80%;
+  margin: 0 auto;
+}
+.login-toggler {
+  position: absolute;
+  top: 0px;
+  right: 0%;
+  bottom: 0px;
+  z-index: 10;
+  width: 38%;
+  background-color: #0077FF;
+  background-image: url(imgs/bg/fruits.png), url(imgs/bg/entrance.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 100%, 100% 50%;
+  color: #fff;
+  text-align: center;
+  padding-top: 4em;
+}
+.login-toggler .btn-40 {
+  width: 40%;
+}
+.login-toggler .text {
+  position: relative;
+  overflow: hidden;
+}
+.login-toggler .text-1 {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-left: 0%;
+}
+.login-toggler .text-2 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  left: -100%;
 }
 
 /***********

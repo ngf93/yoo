@@ -1,7 +1,6 @@
 import React from 'react';
 import useIsMobile from '../hooks/isMobile';
 import { HiChevronRight } from "react-icons/hi2";
-import { AiOutlineExclamation } from "react-icons/ai";
 import { BsExclamationLg } from "react-icons/bs";
 
 const LiNotification = () => {
