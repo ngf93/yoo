@@ -6669,6 +6669,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, label, span, a, button,
     width: 100% !important;
   }
 }
+@media (max-width: 991.98px) {
+  .w-md-100 {
+    width: 100% !important;
+  }
+}
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -7522,6 +7527,47 @@ select {
 .select-options label img.round {
   border-radius: 50%;
   filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
+}
+
+.input-file {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 1.25em;
+  transition: 300ms ease-in;
+  background-color: #fff;
+  border: 1px solid #F4F6F8;
+  position: relative;
+}
+.input-file:hover {
+  cursor: pointer;
+}
+.input-file input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+}
+.input-file svg {
+  color: #0077FF;
+  font-size: 1.5em;
+  stroke-width: 1.25px;
+}
+.input-file .ind {
+  position: absolute;
+  bottom: -0.25em;
+  right: 0px;
+  color: #0077FF;
+  font-weight: 600;
+  line-height: 1em;
+  font-size: 0.9em;
+}
+.input-file .ind:empty {
+  display: none;
 }
 
 /* Sliders */
@@ -10408,11 +10454,18 @@ ACCOUNT
 .account .support {
   display: grid;
   grid-template-columns: 7fr 3fr;
-  grid-template-rows: 72px auto 100px;
+  grid-template-rows: 75px auto 75px;
   grid-template-areas: "top top" "chat choose" "form choose";
   background-color: #fff;
   border-radius: 1.25em;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+}
+@media (max-width: 991.98px) {
+  .account .support {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "choose" "chat";
+  }
 }
 .account .support-top {
   grid-area: top;
@@ -10423,6 +10476,11 @@ ACCOUNT
   justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
+}
+@media (max-width: 991.98px) {
+  .account .support-top {
+    display: none;
+  }
 }
 .account .support-top-icon {
   position: relative;
@@ -10451,9 +10509,6 @@ ACCOUNT
 }
 .account .support-top-icon .indicator.active {
   background-color: #0077FF;
-}
-.account .support-top h5, .account .support-top .h5 {
-  font-weight: 600;
 }
 .account .support-chat {
   grid-area: chat;
@@ -10509,6 +10564,15 @@ ACCOUNT
   align-items: center;
   flex-wrap: nowrap;
 }
+@media (max-width: 991.98px) {
+  .account .support-form {
+    position: fixed;
+    bottom: var(--f-height);
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+  }
+}
 .account .support-form input {
   border-color: transparent;
   box-shadow: none;
@@ -10521,7 +10585,7 @@ ACCOUNT
   padding: 1.5em;
 }
 .chat-message {
-  margin: 1em 0px;
+  margin-bottom: 2em;
 }
 .chat-message time {
   display: block;
@@ -10539,8 +10603,22 @@ ACCOUNT
 }
 .chat-message.manager {
   width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.chat-message.manager .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1em;
 }
 .chat-message.manager .bubble {
+  margin-top: 0.5em;
   padding: 1em;
   border-radius: 0px 1.25em 1.25em 1.25em;
   background-color: #F4F6F8;
@@ -10554,13 +10632,11 @@ ACCOUNT
   position: relative;
   z-index: 1;
   width: 62%;
-  background-color: #fff;
   padding: 4em;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .login-forms {
-    padding: 2em 0em;
-    width: 100%;
+    padding: 2em;
   }
 }
 .login-forms form {
@@ -10610,6 +10686,10 @@ ACCOUNT
   height: 100%;
   z-index: 10;
   left: -100%;
+}
+.login-mobile {
+  display: block;
+  padding: 2em 0px;
 }
 
 /***********

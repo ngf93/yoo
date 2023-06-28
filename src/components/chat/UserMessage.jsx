@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyMessage = (props) => {
+const UserMessage = (props) => {
   return (
     <div className="chat-message mine">
       <time>{props.time}</time>
@@ -11,4 +11,4 @@ const MyMessage = (props) => {
   );
 };
 
-export default MyMessage;
+export default UserMessage;

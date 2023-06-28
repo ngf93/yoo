@@ -10,23 +10,23 @@ const RegistrationForm = () => {
       
       <p className='fs-11 mb-1'>Имя</p>
       <Row className='gx-3 mb-4'>
-        <Col md={7}>
+        <Col xs={12} lg={7}>
           <input type="text" placeholder='Имя'/>
         </Col>
       </Row>
 
       <p className='fs-11 mb-1'>Email</p>
-      <Row className='gx-3 mb-4'>
-        <Col md={7}>
+      <Row className='gx-0 gx-lg-3 mb-4'>
+        <Col xs={8} lg={7}>
           <input type="email" placeholder='Email'/>
         </Col>
-        <Col md={4}>
-          <button type='button' className='btn-1 rounded-3'>Подтвердить</button>
+        <Col xs={4}>
+          <button type='button' className='btn-1 w-100 rounded-3'>Подтвердить</button>
         </Col>
       </Row>
 
       <p className="main-color fs-09">Нажимая на кнопку «Зарегистрироваться», вы принимаете условия Пользовательского соглашения и соглашаетесь с Политикой конфиденциальности</p>
-      <button type='submit' disabled className='btn-1 rounded-3 mt-4'>Зарегистрироваться</button>
+      <button type='submit' disabled className='btn-1 w-md-100 rounded-3 mt-4'>Зарегистрироваться</button>
     </form>
   );
 };

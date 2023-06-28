@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import Container from 'react-bootstrap/Container';
 import RegistrationForm from '../components/forms/RegistrationForm';
 import LoginForm from '../components/forms/LoginForm';
@@ -58,16 +58,29 @@ const Registration = () => {
   return (
     <main className='py-lg-0'>
       <Container>
-        <section className='login'>
-          <div ref={block2} className="login-forms">
+        {
+          (isMobileLG)
+          ? <section className='login-mobile'>
             {
               (login)
-              ? <LoginForm/>
-              : <RegistrationForm/>
+              ? <>
+                <LoginForm/>
+                <button type='button' onClick={()=>setLogin(false)} className='main-color fs-13 mx-auto mt-4 text-decoration-underline'>Зарегистрироваться</button>
+              </>
+              : <>
+                <RegistrationForm/>
+                <button type='button' onClick={()=>setLogin(true)} className='main-color fs-13 mx-auto mt-4 text-decoration-underline'>Войти</button>
+              </>
             }
-          </div>
-          {
-            (!isMobileLG) &&
+          </section>
+          : <section className='login'>
+            <div ref={block2} className="login-forms">
+              {
+                (login)
+                ? <LoginForm/>
+                : <RegistrationForm/>
+              }
+            </div>
             <div ref={block1} className="login-toggler">
               <div className="text">
                 <div ref={text1} className="text-1">
@@ -87,9 +100,8 @@ const Registration = () => {
                 }
               </button>
             </div>
-          }
-          
-        </section>
+          </section>
+        }
       </Container>
     </main>
   );
